@@ -1,45 +1,35 @@
-import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
-import javafx.animation.Transition;
-import javafx.application.Application;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.util.HashMap;
 
 /**
- * Created by Alexander on 14.03.2016.
+ * Created by Alexander on 24.03.2016.
  */
-public class Flonarnia extends Application {
-
+public class Flonarnia {
+    private Stage primaryStage;
     private HashMap<KeyCode, Boolean> keys = new HashMap<>();
     private Player player = new Player();
-
-
     int a = 2;
 
-    @Override
-    public void start(Stage primaryStage) {
+    public Flonarnia(Stage primaryStage){
+        this.primaryStage = primaryStage;
+    }
 
-
-        String musicFile = "23.mp3";     // For example
+    public void run(){
+        String musicFile = "23.mp3";
         Thread t = new Thread(() -> {
             Media sound = new Media(new File(musicFile).toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            while(true)
             mediaPlayer.play();
         });
-       // t.start();
+        //t.start();
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
@@ -51,14 +41,20 @@ public class Flonarnia extends Application {
         };
         timer.start();
 
-        Scene s = new Scene(new Group(player),300,300,Color.RED);
-        s.setOnKeyPressed(event->keys.put(event.getCode(),true));
-        s.setOnKeyReleased(event-> {
+
+        Pane root = new Pane();
+        Scene mainScene = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
+        primaryStage.setScene(mainScene);
+        root.getChildren().add(player);
+        mainScene.setOnKeyPressed(event->keys.put(event.getCode(),true));
+        mainScene.setOnKeyReleased(event-> {
             keys.put(event.getCode(), false);
+            player.stop();
         });
-        primaryStage.setScene(s);
-        primaryStage.show();
+
     }
+
+
     private boolean shift = false;
     public void update() {
         if (isPressed(KeyCode.UP) || isPressed(KeyCode.W)) {
@@ -82,64 +78,5 @@ public class Flonarnia extends Application {
     public boolean isPressed(KeyCode key) {
         return keys.getOrDefault(key, false);
     }
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-
-    /*static long startNanoTime;
-    @Override
-    public void init() throws Exception {
-        //init resources;
-    }
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Flonarnia");
-        Pane root = new Pane();
-        Canvas canvas = new Canvas(512,512);
-        root.getChildren().add(canvas);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        Image image = new Image("sun.png");
-        ProgressBar progressBar = new ProgressBar(0);
-
-        ProgressIndicator progressIndicator = new ProgressIndicator(0);
-
-        progressIndicator.setTranslateX(200);
-
-        root.getChildren().addAll(progressBar, progressIndicator);
-
-        startNanoTime  = System.nanoTime();
-        new AnimationTimer() {
-            @Override
-            public void handle(long currentNanoTime) {
-                gc.clearRect(0,0,512,512);
-                double t = (currentNanoTime - startNanoTime) / 1000000000.0;
-
-                double x =  250 + 100 * Math.cos(t-3.14/2);
-                double y =  250 + 100 * Math.sin(t-3.14/2);
-
-                    progressIndicator.setProgress(t / 6.28);
-                    progressBar.setProgress(t / 6.28);
-                if (x < 250 && y < 151){
-                    //progressIndicator.setProgress(0);
-                    //progressBar.setProgress(0);
-                    startNanoTime = currentNanoTime;
-                }
-                gc.drawImage( image, x, y );
-
-                //user input;
-                //update;
-                //render;
-                //sync
-            }
-        }.start();
-        Scene scene = new Scene(root,512,512, Color.ANTIQUEWHITE);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    @Override
-    public void stop() throws Exception {
-        //release resources;
-    }*/
 }

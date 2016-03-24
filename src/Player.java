@@ -1,6 +1,3 @@
-import javafx.animation.Animation;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
@@ -128,9 +125,11 @@ public class Player  extends Pane {
                 animation.play();
     }
     public void stop(){
-        isRunning = false;
-        //animation.setColumns(6);
-        //animation.setOffsetX(212);
+        if (isRunning) {
+            isRunning = false;
+            animation.setColumns(6);
+            animation.setOffsetX(212);
+        }
         animation.interpolate(0);
         animation.stop();
     }
