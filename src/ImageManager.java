@@ -17,6 +17,7 @@ public class ImageManager {
     }
     protected ImageManager(){
         images.put("PLAYER",new Image(getClass().getResourceAsStream("res/0.png")));
+        images.put("TREE_0", new Image(getClass().getResourceAsStream("res/tree_0.png")));
     }
 
     public Image getImage(String key){

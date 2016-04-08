@@ -1,8 +1,12 @@
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 /**
@@ -30,8 +34,8 @@ public class Player  extends Pane {
     ImageView imageView = new ImageView(image);
 
     private SpriteAnimation animation;
+
     public Point2D playerVelocity = new Point2D(0,0);
-    private boolean canJump = true;
 
     public Player(){
         this.setTranslateX(150);
@@ -45,6 +49,31 @@ public class Player  extends Pane {
     public void moveX(int value, boolean run){
         animation.setWidthHeight(width,height);
         this.setTranslateX(this.getTranslateX() + value);
+        FadeTransition f = new FadeTransition(Duration.seconds(0.5), Flonarnia.rect);
+        if(Flonarnia.rect.getBoundsInParent().intersects(this.getBoundsInParent())){
+            System.out.println("True");
+            this.setTranslateX(this.getTranslateX() - value);
+            Flonarnia.rect.setFill(Color.RED);
+            //f.setFromValue(1);
+            f.setToValue(0.2);
+            f.play();
+            return;
+        }
+        else
+        {
+            System.out.println("Fasle");
+            Flonarnia.rect.setFill(Color.BLUE);
+            //f.setFromValue(1);
+            f.setToValue(1);
+            f.play();
+        }
+        for (Tree tree:Flonarnia.trees){
+            if(tree.rect.getBoundsInParent().intersects(this.getBoundsInParent())){
+                this.setTranslateX(this.getTranslateX() - value);
+                return;
+            }
+        }
+
         int x = 0;
         int c = 6;
         if (run){
@@ -69,6 +98,33 @@ public class Player  extends Pane {
     public void moveY(int value, boolean run){
         animation.setWidthHeight(width,height);
         this.setTranslateY(this.getTranslateY() + value);
+        FadeTransition f = new FadeTransition(Duration.seconds(0.5), Flonarnia.rect);
+        if(Flonarnia.rect.getBoundsInParent().intersects(this.getBoundsInParent())){
+            System.out.println("True");
+            this.setTranslateY(this.getTranslateY() - value);
+            Flonarnia.rect.setFill(Color.RED);
+            //f.setFromValue(1);
+            f.setToValue(0.2);
+            f.play();
+            return;
+        }
+        else
+        {
+            System.out.println("Fasle");
+            Flonarnia.rect.setFill(Color.BLUE);
+            //f.setFromValue(1);
+            f.setToValue(1);
+            f.play();
+        }
+        for (Tree tree:Flonarnia.trees){
+            if(tree.rect.getBoundsInParent().intersects(this.getBoundsInParent())){
+                this.setTranslateY(this.getTranslateY() - value);
+                return;
+            }
+        }
+
+
+
         int x = 0;
         int c = 6;
         if (run){
@@ -143,10 +199,4 @@ public class Player  extends Pane {
             animation.interpolate(0);
         });
     }
-    /*public void jumpPlayer(){
-        if(canJump){
-            playerVelocity = playerVelocity.add(0,-28);
-            canJump = false;
-        }
-    }*/
 }

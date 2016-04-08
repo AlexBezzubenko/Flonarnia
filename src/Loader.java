@@ -5,6 +5,7 @@
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.concurrent.Task;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
@@ -27,8 +28,10 @@ public class Loader {
     public Parent createContent(){
         Pane root = new Pane();
         root.setPrefSize(APP_W, APP_H);
-        Image backgroundImg = new Image(getClass().getResourceAsStream("res/background.jpg"));
+        Image backgroundImg = new Image(getClass().getResourceAsStream("res/background2.png"));
         ImageView background = new ImageView(backgroundImg);
+        Image backgroundRectImage = new Image(getClass().getResourceAsStream("res/rectback.png"));
+        ImageView backgroundRect = new ImageView(backgroundRectImage);
         background.setFitWidth(APP_W);
         background.setFitHeight(APP_H);
 
@@ -44,15 +47,22 @@ public class Loader {
         loadingBar.setEndY(APP_H - 70);
         loadingBar.setStroke(Color.WHITE);
 
+        TranslateTransition rectAnimation = new TranslateTransition(Duration.seconds(2.5), backgroundRect);
+        rectAnimation.setFromX(-400);
+        rectAnimation.setToX(0);
+        rectAnimation.setCycleCount(Animation.INDEFINITE);
+        rectAnimation.setAutoReverse(true);
+        rectAnimation.play();
 
-        root.getChildren().addAll(background, loadingCircle, loadingBarBG, loadingBar);
+        root.getChildren().addAll(backgroundRect, background, loadingCircle, loadingBarBG, loadingBar);
+
+
 
         return root;
     }
 
     private static class LoadingCircle extends Parent{
         private RotateTransition animation;
-
         public LoadingCircle(){
             Circle circle = new Circle(20);
             circle.setFill(null);
@@ -87,8 +97,8 @@ public class Loader {
 
             @Override
             protected void succeeded() {
-                Flonarnia game = new Flonarnia(stage);
-                game.run();
+                 Flonarnia game = new Flonarnia(stage);
+                 game.run();
             }
         }
         ResourceLoadingTask task = new ResourceLoadingTask();

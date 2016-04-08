@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Flonarnia:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Flonarnia_jar</output-path>
+    <root id="archive" name="Flonarnia.jar">
+      <element id="module-output" name="Flonarnia" />
+    </root>
+  </artifact>
+</component>
