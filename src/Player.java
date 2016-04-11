@@ -13,9 +13,9 @@ import javafx.util.Duration;
  * Created by Alexander on 22.03.2016.
  */
 
-public class Player  extends Pane {
-    private final int WIDTH = 32;
-    private final int HEIGHT = 60;
+public class Player  extends Flobject {
+    private final double WIDTH = 32;
+    private final double HEIGHT = 60;
 
     int columns = 6;
     int offsetX = 0;
@@ -30,46 +30,40 @@ public class Player  extends Pane {
 
     boolean isRunning = false;
 
-    Image image = ImageManager.getInstance().getImage("PLAYER");
-    ImageView imageView = new ImageView(image);
-
     private SpriteAnimation animation;
 
     public Point2D playerVelocity = new Point2D(0,0);
 
-    public Player(){
-        this.setTranslateX(150);
-        this.setTranslateY(150);
+    public Player(double translateX, double translateY){
+
+        super(translateX, translateY, 32, 60);
         imageView.setViewport(new Rectangle2D(offsetX,offsetY,width,height));
         animation = new SpriteAnimation(this.imageView, Duration.millis(1000),columns,offsetX,offsetY,width,height);
         animation.setCycleCount(1);
-        getChildren().addAll(this.imageView);
+        rect.setWidth(WIDTH / 2);
+        rect.setHeight(HEIGHT / 2);
+        rect.setTranslateY(translateY + HEIGHT / 2);
+        rect.setTranslateX(translateX + WIDTH / 4);
+        //getChildren().addAll(this.imageView);
     }
 
     public void moveX(int value, boolean run){
+
+
         animation.setWidthHeight(width,height);
         this.setTranslateX(this.getTranslateX() + value);
-        FadeTransition f = new FadeTransition(Duration.seconds(0.5), Flonarnia.rect);
-        if(Flonarnia.rect.getBoundsInParent().intersects(this.getBoundsInParent())){
-            System.out.println("True");
-            this.setTranslateX(this.getTranslateX() - value);
-            Flonarnia.rect.setFill(Color.RED);
-            //f.setFromValue(1);
-            f.setToValue(0.2);
-            f.play();
-            return;
-        }
-        else
-        {
-            System.out.println("Fasle");
-            Flonarnia.rect.setFill(Color.BLUE);
-            //f.setFromValue(1);
-            f.setToValue(1);
-            f.play();
-        }
+        rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
+
+        System.out.println("rect = " +this.rect.getBoundsInParent());
+        System.out.println("player = " +this.getBoundsInParent());
+        int i = 0;
         for (Tree tree:Flonarnia.trees){
-            if(tree.rect.getBoundsInParent().intersects(this.getBoundsInParent())){
+
+            System.out.println("tree = " + (i++) + " " + tree.rect.getBoundsInParent());
+
+            if(tree.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
                 this.setTranslateX(this.getTranslateX() - value);
+                rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
                 return;
             }
         }
@@ -98,31 +92,15 @@ public class Player  extends Pane {
     public void moveY(int value, boolean run){
         animation.setWidthHeight(width,height);
         this.setTranslateY(this.getTranslateY() + value);
-        FadeTransition f = new FadeTransition(Duration.seconds(0.5), Flonarnia.rect);
-        if(Flonarnia.rect.getBoundsInParent().intersects(this.getBoundsInParent())){
-            System.out.println("True");
-            this.setTranslateY(this.getTranslateY() - value);
-            Flonarnia.rect.setFill(Color.RED);
-            //f.setFromValue(1);
-            f.setToValue(0.2);
-            f.play();
-            return;
-        }
-        else
-        {
-            System.out.println("Fasle");
-            Flonarnia.rect.setFill(Color.BLUE);
-            //f.setFromValue(1);
-            f.setToValue(1);
-            f.play();
-        }
+        rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
+        
         for (Tree tree:Flonarnia.trees){
-            if(tree.rect.getBoundsInParent().intersects(this.getBoundsInParent())){
+            if(tree.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
                 this.setTranslateY(this.getTranslateY() - value);
+                rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
                 return;
             }
         }
-
 
 
         int x = 0;

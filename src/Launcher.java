@@ -14,13 +14,13 @@ public class Launcher extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Authorization authorization = new Authorization(primaryStage);
-        Scene scene = new Scene(authorization.createContent());
-        primaryStage.setScene(scene);
+       // Authorization authorization = new Authorization(primaryStage);
+       // Scene scene = new Scene(authorization.createContent());
+       // primaryStage.setScene(scene);
         primaryStage.setWidth(800);
         primaryStage.setHeight(600);
-       // Flonarnia game = new Flonarnia(primaryStage);
-       // game.run();
+        Flonarnia game = new Flonarnia(primaryStage);
+        game.run();
         /*File file = new File("src/file.txt");
 
         try (FileReader reader= new FileReader("src/file.txt")) {

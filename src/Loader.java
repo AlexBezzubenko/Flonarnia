@@ -55,9 +55,6 @@ public class Loader {
         rectAnimation.play();
 
         root.getChildren().addAll(backgroundRect, background, loadingCircle, loadingBarBG, loadingBar);
-
-
-
         return root;
     }
 
