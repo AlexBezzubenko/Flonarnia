@@ -15,7 +15,6 @@ public class Tree  extends Flobject {
 
     public Tree(double translateX, double translateY){
         super(translateX, translateY, 150, 200);
-
         rect.setWidth(WIDTH / 2);
         rect.setHeight(HEIGHT / 2);
         rect.setTranslateY(translateY + HEIGHT / 2);

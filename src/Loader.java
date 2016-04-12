@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Loader {
-    private  static final int APP_W = 800;
+    private static final int APP_W = 800;
     private static final int APP_H = 600;
 
     private Line loadingBar = new Line();

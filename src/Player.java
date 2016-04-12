@@ -19,9 +19,9 @@ public class Player  extends Flobject {
 
     int columns = 6;
     int offsetX = 0;
-    int offsetY = 0;
-    int width = 32;
-    int height = 60;
+    double offsetY = 0;
+    double width = 32;
+    double height = 60;
 
     private boolean right = true;
     private boolean top = false;
@@ -35,7 +35,6 @@ public class Player  extends Flobject {
     public Point2D playerVelocity = new Point2D(0,0);
 
     public Player(double translateX, double translateY){
-
         super(translateX, translateY, 32, 60);
         imageView.setViewport(new Rectangle2D(offsetX,offsetY,width,height));
         animation = new SpriteAnimation(this.imageView, Duration.millis(1000),columns,offsetX,offsetY,width,height);
@@ -48,19 +47,11 @@ public class Player  extends Flobject {
     }
 
     public void moveX(int value, boolean run){
-
-
-        animation.setWidthHeight(width,height);
+        changeSize(WIDTH, HEIGHT);
         this.setTranslateX(this.getTranslateX() + value);
         rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
 
-        System.out.println("rect = " +this.rect.getBoundsInParent());
-        System.out.println("player = " +this.getBoundsInParent());
-        int i = 0;
         for (Tree tree:Flonarnia.trees){
-
-            System.out.println("tree = " + (i++) + " " + tree.rect.getBoundsInParent());
-
             if(tree.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
                 this.setTranslateX(this.getTranslateX() - value);
                 rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
@@ -90,10 +81,11 @@ public class Player  extends Flobject {
         animation.onFinishedProperty().set(actionEvent -> isRunning = true);
     }
     public void moveY(int value, boolean run){
+        changeSize(WIDTH, HEIGHT);
         animation.setWidthHeight(width,height);
         this.setTranslateY(this.getTranslateY() + value);
         rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
-        
+
         for (Tree tree:Flonarnia.trees){
             if(tree.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
                 this.setTranslateY(this.getTranslateY() - value);
@@ -101,7 +93,6 @@ public class Player  extends Flobject {
                 return;
             }
         }
-
 
         int x = 0;
         int c = 6;
@@ -168,13 +159,23 @@ public class Player  extends Flobject {
         animation.stop();
     }
     public void attack(){
+        changeSize(60, 70);
         animation.setColumns(5);
         animation.setOffsetX(2);
         animation.setOffsetY(513);
-        animation.setWidthHeight(60,70);
+
         animation.play();
         animation.setOnFinished(event -> {
+            changeSize(WIDTH, HEIGHT);
             animation.interpolate(0);
         });
+    }
+    private void changeSize(double width, double height){
+        this.width = width;
+        this.height = height;
+        this.setPrefSize(width,height);
+        imageView.setFitWidth(width);
+        imageView.setFitHeight(height);
+        animation.setWidthHeight(width,height);
     }
 }
