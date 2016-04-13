@@ -51,7 +51,7 @@ public class Player  extends Flobject {
         this.setTranslateX(this.getTranslateX() + value);
         rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
 
-        for (Tree tree:Flonarnia.trees){
+        for (Flobject tree:Flonarnia.trees){
             if(tree.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
                 this.setTranslateX(this.getTranslateX() - value);
                 rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
@@ -86,7 +86,7 @@ public class Player  extends Flobject {
         this.setTranslateY(this.getTranslateY() + value);
         rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
 
-        for (Tree tree:Flonarnia.trees){
+        for (Flobject tree:Flonarnia.trees){
             if(tree.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
                 this.setTranslateY(this.getTranslateY() - value);
                 rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
