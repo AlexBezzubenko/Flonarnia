@@ -26,7 +26,7 @@ public class Flonarnia {
     public static Pane appRoot = new Pane();
     public static Pane gameRoot = new Pane();
 
-    public static ArrayList<Flobject> trees = new ArrayList<>();
+    public static ArrayList<Flobject> flobjects = new ArrayList<>();
     ArrayList<ImageView> gv = new ArrayList<>();
 
     public Flonarnia(Stage primaryStage){
@@ -94,15 +94,16 @@ public class Flonarnia {
             }
         });
 
-        trees.add(new Tree(500, 400));
-        trees.add(new Tree(500, 600));
-        trees.add(new Tree(800, 400));
-        trees.add(new Tree(1000, 500));
-        trees.add(new House(-100, -100));
+        flobjects.add(new Tree(500, 400));
+        flobjects.add(new Tree(500, 600));
+        flobjects.add(new Tree(800, 400));
+        flobjects.add(new Tree(1000, 500));
+        flobjects.add(new House(-100, -100));
+        flobjects.add(player);
 
         gameRoot.getChildren().addAll(gv);
-        gameRoot.getChildren().addAll( player);
-        gameRoot.getChildren().addAll(trees);
+        //gameRoot.getChildren().addAll( player);
+        gameRoot.getChildren().addAll(flobjects);
         appRoot.getChildren().addAll(gameRoot);
 
         Scene mainScene = new Scene(appRoot, APP_W, APP_W);

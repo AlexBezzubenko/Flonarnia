@@ -51,13 +51,16 @@ public class Player  extends Flobject {
         this.setTranslateX(this.getTranslateX() + value);
         rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
 
-        for (Flobject tree:Flonarnia.trees){
-            if(tree.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
+        if (Collision.checkTranslteX(this, Flonarnia.flobjects, value)){
+            return;
+        }
+        /*for (Flobject flobject:Flonarnia.flobjects){
+            if(flobject != this && flobject.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
                 this.setTranslateX(this.getTranslateX() - value);
                 rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
                 return;
             }
-        }
+        }*/
 
         int x = 0;
         int c = 6;
@@ -85,14 +88,19 @@ public class Player  extends Flobject {
         animation.setWidthHeight(width,height);
         this.setTranslateY(this.getTranslateY() + value);
         rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
-
-        for (Flobject tree:Flonarnia.trees){
-            if(tree.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
+        if (Collision.checkTranslteY(this, Flonarnia.flobjects, value)){
+            return;
+        }
+        /*for (Flobject flobject:Flonarnia.flobjects){
+            if(flobject != this && flobject.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
+                if (flobject.getClass() == House.class){
+                    System.out.println("House");
+                }
                 this.setTranslateY(this.getTranslateY() - value);
                 rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
                 return;
             }
-        }
+        }*/
 
         int x = 0;
         int c = 6;
