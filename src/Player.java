@@ -59,6 +59,14 @@ public class Player  extends Flobject {
             }
         }
 
+        for (House house:Flonarnia.houses){
+            if(house.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
+                this.setTranslateX(this.getTranslateX() - value);
+                rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
+                return;
+            }
+        }
+
         int x = 0;
         int c = 6;
         if (run){
@@ -93,6 +101,14 @@ public class Player  extends Flobject {
                 return;
             }
         }
+        for (House house:Flonarnia.houses){
+            if(house.rect.getBoundsInParent().intersects(this.rect.getBoundsInParent())){
+                this.setTranslateY(this.getTranslateY() - value);
+                rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
+                return;
+            }
+
+                    }
 
         int x = 0;
         int c = 6;
