@@ -25,6 +25,9 @@ public class Flonarnia {
     int a = 5;
     public static Pane appRoot = new Pane();
     public static Pane gameRoot = new Pane();
+    public static Pane enviromentRoot=new Pane();//reislor
+    public static Pane backgroundRoot=new Pane();//reislor
+    public static Pane foregroundRoot =new Pane();//reislor
 
     public static ArrayList<Flobject> flobjects = new ArrayList<>();
     ArrayList<ImageView> gv = new ArrayList<>();
@@ -93,17 +96,20 @@ public class Flonarnia {
                 //grassView.setLayoutY( -(offset - APP_H /2 ));
             }
         });
-
+        flobjects.add(player);
         flobjects.add(new Tree(500, 400));
         flobjects.add(new Tree(500, 600));
         flobjects.add(new Tree(800, 400));
         flobjects.add(new Tree(1000, 500));
         flobjects.add(new House(-100, -100));
-        flobjects.add(player);
+
 
         gameRoot.getChildren().addAll(gv);
+
         //gameRoot.getChildren().addAll( player);
-        gameRoot.getChildren().addAll(flobjects);
+        backgroundRoot.getChildren().addAll(gv);//reislor
+        foregroundRoot.getChildren().addAll(flobjects);
+        gameRoot.getChildren().addAll(backgroundRoot,foregroundRoot);
         appRoot.getChildren().addAll(gameRoot);
 
         Scene mainScene = new Scene(appRoot, APP_W, APP_W);

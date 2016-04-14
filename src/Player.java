@@ -42,8 +42,9 @@ public class Player  extends Flobject {
         rect.setWidth(WIDTH / 2);
         rect.setHeight(HEIGHT / 2);
         rect.setTranslateY(translateY + HEIGHT / 2);
-        rect.setTranslateX(translateX + WIDTH / 4);
+        rect.setTranslateX(translateX + WIDTH /4);
         //getChildren().addAll(this.imageView);
+
     }
 
     public void moveX(int value, boolean run){
