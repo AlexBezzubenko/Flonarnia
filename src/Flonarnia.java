@@ -21,15 +21,23 @@ public class Flonarnia {
     private final double APP_H;
     private Stage primaryStage;
     private HashMap<KeyCode, Boolean> keys = new HashMap<>();
+    //private NPC player;
     private Player player;
     int a = 5;
     public static Pane appRoot = new Pane();
     public static Pane gameRoot = new Pane();
-    public static Pane enviromentRoot=new Pane();//reislor
-    public static Pane backgroundRoot=new Pane();//reislor
-    public static Pane foregroundRoot =new Pane();//reislor
+    public static Pane backgroundRoot = new Pane(); //reislor
+    public static Pane foregroundRoot = new Pane(); //reislor
+
+    NPC guider = new NPC(900, 900, "guider");
+    NPC warrior = new NPC(900, 1000, "warrior");
+    NPC shaman = new NPC(1000, 900, "shaman");
+    NPC trader = new NPC(1000, 1000, "trader");
+    NPC gatekeeper = new NPC(1100, 900, "gatekeeper");
+    NPC blacksmith = new NPC(1100, 1000, "blacksmith");
 
     public static ArrayList<Flobject> flobjects = new ArrayList<>();
+
     ArrayList<ImageView> gv = new ArrayList<>();
 
     public Flonarnia(Stage primaryStage){
@@ -39,6 +47,7 @@ public class Flonarnia {
         double x = APP_W / 4 + 600;
         double y = APP_H / 4 + 600;
         player = new Player(x, y);
+        //player = new NPC(x, y, "trader");
         gameRoot.setLayoutX( -(x - APP_W / 2));
         gameRoot.setLayoutY( -(y - APP_H / 2));
     }
@@ -56,6 +65,12 @@ public class Flonarnia {
             @Override
             public void handle(long now) {
                 //player.moveCircle(1);
+                guider.moveCircle(1);
+                trader.moveCircle(1);
+                blacksmith.moveCircle(1);
+                gatekeeper.moveCircle(1);
+                shaman.moveCircle(1);
+                warrior.moveCircle(1);
                 update();
             }
         };
@@ -64,9 +79,6 @@ public class Flonarnia {
         Image grassImage = new Image(getClass().getResourceAsStream("/res/map.png"));
         ImageView grassView = new ImageView(grassImage);
         grassView.setViewport(new Rectangle2D(0, 0, APP_W, APP_H));
-
-       // Image grassTileImage = new Image(getClass().getResourceAsStream("/res/grass.png"));
-       // ImageView grassTileView = new ImageView(grassTileImage);
 
 
         double gvTranslateX = -APP_W;
@@ -102,7 +114,12 @@ public class Flonarnia {
         flobjects.add(new Tree(800, 400));
         flobjects.add(new Tree(1000, 500));
         flobjects.add(new House(-100, -100));
-
+        flobjects.add(trader);
+        flobjects.add(guider);
+        flobjects.add(warrior);
+        flobjects.add(shaman);
+        flobjects.add(gatekeeper);
+        flobjects.add(blacksmith);
 
         gameRoot.getChildren().addAll(gv);
 

@@ -1,3 +1,5 @@
+import javafx.scene.shape.Circle;
+
 import java.util.ArrayList;
 
 /**
@@ -15,7 +17,6 @@ public class Collision {
         return false;
     }
     public static boolean checkTranslteY(Flobject checking, ArrayList<Flobject> checkers, double value){
-
         for (Flobject flobject:checkers){
 
             if(Math.abs(checking.getTranslateY()- flobject.getTranslateY())<200 ||Math.abs(checking.getTranslateX()- flobject.getTranslateX())<200){
