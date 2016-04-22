@@ -1,7 +1,3 @@
-import javafx.geometry.Point2D;
-import javafx.geometry.Rectangle2D;
-import javafx.util.Duration;
-
 /**
  * Created by Alexander on 15.04.2016.
  */

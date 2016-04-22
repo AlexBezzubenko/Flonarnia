@@ -35,6 +35,11 @@ public class Flonarnia {
     NPC trader = new NPC(1000, 1000, "trader");
     NPC gatekeeper = new NPC(1100, 900, "gatekeeper");
     NPC blacksmith = new NPC(1100, 1000, "blacksmith");
+    Enemy buffalo = new Enemy(1000, 700, "buffalo");
+    Enemy dark_soul = new Enemy(1100, 700, "dark_soul2");
+    Enemy dragon = new Enemy(1200, 700, "dragon");
+    Enemy ogre = new Enemy(1400, 700, "ogre");
+    Enemy undead = new Enemy(1300, 700, "undead");
 
     public static ArrayList<Flobject> flobjects = new ArrayList<>();
 
@@ -71,6 +76,11 @@ public class Flonarnia {
                 gatekeeper.moveCircle(1);
                 shaman.moveCircle(1);
                 warrior.moveCircle(1);
+                dragon.moveCircle(1);
+                dark_soul.moveCircle(1);
+                buffalo.moveCircle(1);
+                ogre.moveCircle(1);
+                undead.moveCircle(1);
                 update();
             }
         };
@@ -120,6 +130,11 @@ public class Flonarnia {
         flobjects.add(shaman);
         flobjects.add(gatekeeper);
         flobjects.add(blacksmith);
+        flobjects.add(dragon);
+        flobjects.add(dark_soul);
+        flobjects.add(buffalo);
+        flobjects.add(ogre);
+        flobjects.add(undead);
 
         gameRoot.getChildren().addAll(gv);
 
@@ -144,6 +159,7 @@ public class Flonarnia {
     public void update() {
         if (isPressed(KeyCode.UP) || isPressed(KeyCode.W)) {
             player.moveY(-a, shift);
+            //enemy.moveY(-a, shift);
             if (player.getTranslateY() < gv.get(4).getTranslateY()){
                 for (ImageView imageView: gv){
                     imageView.setTranslateY(imageView.getTranslateY() - APP_H);
@@ -151,6 +167,7 @@ public class Flonarnia {
             }
         } else if (isPressed(KeyCode.DOWN) || isPressed(KeyCode.S)) {
             player.moveY(a, shift);
+            //enemy.moveY(a, shift);
             if (player.getTranslateY() > gv.get(4).getTranslateY() + APP_H){
                 for (ImageView imageView: gv){
                     imageView.setTranslateY(imageView.getTranslateY() + APP_H);
@@ -158,6 +175,7 @@ public class Flonarnia {
             }
         } else if (isPressed(KeyCode.RIGHT) || isPressed(KeyCode.D)) {
             player.moveX(a, shift);
+            //enemy.moveX(a, shift);
 
             if (player.getTranslateX() > gv.get(4).getTranslateX() + APP_W){
                 for (ImageView imageView: gv){
@@ -166,6 +184,7 @@ public class Flonarnia {
             }
         } else if (isPressed(KeyCode.LEFT) || isPressed(KeyCode.A)) {
             player.moveX(-a, shift);
+            //enemy.moveX(-a, shift);
             if (player.getTranslateX() < gv.get(4).getTranslateX()){
                 for (ImageView imageView: gv){
                     imageView.setTranslateX(imageView.getTranslateX() - APP_W);

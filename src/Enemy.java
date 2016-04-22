@@ -1,16 +1,27 @@
 import javafx.geometry.Rectangle2D;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 /**
- * Created by Alexander on 15.04.2016.
+ * Created by Alexander on 21.04.2016.
  */
-public class Character extends Flobject {
+
+//        name = "buffalo";
+//        name = "dark_soul";
+//        name = "orge";
+//        name = "undead";
+//        name = "dragon";
+//
+
+public class Enemy extends Flobject {
     protected final double WIDTH;
     protected final double HEIGHT;
     protected final double offsetX;
     protected final double offsetY;
 
-    protected int columns = 6;
+    protected int columns = 3;
     protected double width = 32;
     protected double height = 60;
 
@@ -23,22 +34,42 @@ public class Character extends Flobject {
 
     protected SpriteAnimation animation;
 
-    public Character(double translateX, double translateY, String name) {
-        super(translateX, translateY, 32, 60);
-        double[] params = ImageManager.getInstance().getNPCImageParams(name);
+    public Enemy(double translateX, double translateY, String name) {
+        image = ImageManager.getInstance().getImage(name.toUpperCase());
+        imageView = new ImageView(image);
+
+        double[] params = ImageManager.getInstance().getEnemyImageParams(name);
         offsetX = params[0];
         offsetY = params[1];
         WIDTH = params[2];
         HEIGHT = params[3];
+        columns = (int)params[4];
+        width = WIDTH;
+        height = HEIGHT;
 
-        imageView.setViewport(new Rectangle2D(offsetX,offsetY,WIDTH,HEIGHT));
+        this.setTranslateX(translateX);
+        this.setTranslateY(translateY);
+        this.setPrefSize(WIDTH,HEIGHT);
+
+        imageView.setFitWidth(WIDTH);
+        imageView.setFitHeight(HEIGHT);
+        imageView.setViewport(new Rectangle2D(offsetX,offsetY,WIDTH, HEIGHT));
+
+        visual = new Rectangle(WIDTH/4, HEIGHT/2, WIDTH /2 , HEIGHT /2);
+        visual.setStrokeWidth(3);
+        visual.setFill(Color.TRANSPARENT);
+        visual.setStroke(Color.YELLOW);
+
+
         animation = new SpriteAnimation(this.imageView, Duration.millis(1000),columns,offsetX,offsetY,WIDTH,HEIGHT);
         animation.setCycleCount(1);
         rect.setWidth(WIDTH / 2);
         rect.setHeight(HEIGHT / 2);
         rect.setTranslateY(translateY + HEIGHT / 2);
         rect.setTranslateX(translateX + WIDTH /4);
-        this.getChildren().removeAll(this.visual);
+        //this.getChildren().removeAll(this.visual);
+
+        getChildren().addAll(this.imageView, visual);
     }
 
     protected void moveX(int value, boolean run){
@@ -49,26 +80,13 @@ public class Character extends Flobject {
             return;
         }
 
-        double x = offsetX;
-        int c = columns;
-        if (run){
-            x += 212;
-        }
-        if (isRunning){
-            x += width * 2 ;
-            c -= 2;
-        }
-
         if (value > 0) {
-            animation.setOffsetY(offsetY + 192);
+            animation.setOffsetY(offsetY + HEIGHT * 2);
         } else {
-            animation.setOffsetY(offsetY + 128);
+            animation.setOffsetY(offsetY + HEIGHT);
         }
 
-        animation.setOffsetX(x);
-        animation.setColumns(c);
         animation.play();
-        animation.onFinishedProperty().set(actionEvent -> isRunning = true);
     }
 
     protected void moveY(int value, boolean run) {
@@ -79,25 +97,13 @@ public class Character extends Flobject {
             return;
         }
 
-        double x = offsetX;
-        int c = columns;
-        if (run){
-            x += 212;
-        }
-        if (isRunning){
-            x += width * 2 ;
-            c -= 2;
-        }
         if (value > 0) {
-            animation.setOffsetY(0);
+            animation.setOffsetY(offsetY);
         } else {
-            animation.setOffsetY(63);
+            animation.setOffsetY(offsetY + HEIGHT * 3);
         }
 
-        animation.setOffsetX(x);
-        animation.setColumns(c);
         animation.play();
-        animation.onFinishedProperty().set(actionEvent -> isRunning = true);
     }
     public void moveCircle(int velocity){
         /*if(getTranslateX() > 300 - width) {

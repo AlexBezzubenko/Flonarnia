@@ -34,4 +34,6 @@ public class Flobject extends Pane {
 
         getChildren().addAll(this.imageView, visual);
     }
+    public Flobject(){
+    }
 }
