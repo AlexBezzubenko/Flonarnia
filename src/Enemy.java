@@ -13,7 +13,6 @@ import javafx.util.Duration;
 //        name = "orge";
 //        name = "undead";
 //        name = "dragon";
-//
 
 public class Enemy extends Flobject {
     protected final double WIDTH;
@@ -68,15 +67,27 @@ public class Enemy extends Flobject {
         rect.setTranslateY(translateY + HEIGHT / 2);
         rect.setTranslateX(translateX + WIDTH /4);
         //this.getChildren().removeAll(this.visual);
+        this.translateXProperty().addListener((obs, old, newValue)->{
+            this.rect.setTranslateX(newValue.doubleValue() + WIDTH/4);
+        });
+        this.translateYProperty().addListener((obs, old, newValue)->{
+            this.rect.setTranslateY(newValue.doubleValue() + HEIGHT/2);
+        });
+
 
         getChildren().addAll(this.imageView, visual);
     }
 
     protected void moveX(int value, boolean run){
         this.setTranslateX(this.getTranslateX() + value);
-        rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
+        //rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
 
-        if (Collision.checkTranslteX(this, Flonarnia.flobjects, value)){
+        Flobject collisionFlobject = Collision.checkTranslteX(this, Flonarnia.flobjects, value);
+        if (collisionFlobject != null){
+            if (collisionFlobject.getClass() == Player.class){
+                ((Player)collisionFlobject).attacked(value / Math.abs(value) * 200, true);
+                //this.setTranslateX(this.getTranslateX() - 5);
+            }
             return;
         }
 
@@ -92,10 +103,16 @@ public class Enemy extends Flobject {
     protected void moveY(int value, boolean run) {
         animation.setWidthHeight(width,height);
         this.setTranslateY(this.getTranslateY() + value);
-        rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
-        if (Collision.checkTranslteY(this, Flonarnia.flobjects, value)){
+        //rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
+        Flobject collisionFlobject = Collision.checkTranslteY(this, Flonarnia.flobjects, value);
+        if (collisionFlobject != null){
+            if (collisionFlobject.getClass() == Player.class){
+                ((Player)collisionFlobject).attacked(value / Math.abs(value) * 200, false);
+                //this.setTranslateX(this.getTranslateX() - 5);
+            }
             return;
         }
+
 
         if (value > 0) {
             animation.setOffsetY(offsetY);
@@ -141,11 +158,11 @@ public class Enemy extends Flobject {
         animation.play();
         */
         if (moveCircleRadius >= 0 && moveCircleRadius < 800){
-            moveX(velocity, false);
+            moveY(velocity, false);
             animation.play();
         }
         else if (moveCircleRadius < 0 && moveCircleRadius > -800){
-            moveX(-velocity, false);
+            moveY(-velocity, false);
             animation.play();
         }
         moveCircleRadius -= velocity;

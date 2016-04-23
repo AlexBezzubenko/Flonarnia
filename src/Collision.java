@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Alexander on 13.04.2016.
  */
 public class Collision {
-    public static boolean checkTranslteX(Flobject checking, ArrayList<Flobject> checkers, double value){
+    /*public static boolean checkTranslteX(Flobject checking, ArrayList<Flobject> checkers, double value){
         for (Flobject flobject:checkers){
             if(flobject != checking && flobject.rect.getBoundsInParent().intersects(checking.rect.getBoundsInParent())){
                 checking.setTranslateX(checking.getTranslateX() - value);
@@ -15,8 +15,18 @@ public class Collision {
             }}
 
         return false;
+    }*/
+    public static Flobject checkTranslteX(Flobject checking, ArrayList<Flobject> checkers, double value){
+        for (Flobject flobject:checkers){
+            if(flobject != checking && flobject.rect.getBoundsInParent().intersects(checking.rect.getBoundsInParent())){
+                checking.setTranslateX(checking.getTranslateX() - value);
+                checking.rect.setTranslateX(checking.getTranslateX() + checking.WIDTH / 4);
+                return flobject;
+            }}
+
+        return null;
     }
-    public static boolean checkTranslteY(Flobject checking, ArrayList<Flobject> checkers, double value){
+    public static Flobject checkTranslteY(Flobject checking, ArrayList<Flobject> checkers, double value){
         for (Flobject flobject:checkers){
 
             if(Math.abs(checking.getTranslateY()- flobject.getTranslateY())<200 ||Math.abs(checking.getTranslateX()- flobject.getTranslateX())<200){
@@ -36,9 +46,9 @@ public class Collision {
             if(flobject != checking && flobject.rect.getBoundsInParent().intersects(checking.rect.getBoundsInParent())){
                 checking.setTranslateY(checking.getTranslateY() - value);
                 checking.rect.setTranslateY(checking.getTranslateY() + checking.HEIGHT / 2);
-              return true;
+              return flobject;
             }
         }
-        return false;
+        return null;
     }
 }

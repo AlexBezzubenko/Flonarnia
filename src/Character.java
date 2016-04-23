@@ -43,9 +43,9 @@ public class Character extends Flobject {
 
     protected void moveX(int value, boolean run){
         this.setTranslateX(this.getTranslateX() + value);
-        rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
+        //rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
 
-        if (Collision.checkTranslteX(this, Flonarnia.flobjects, value)){
+        if (Collision.checkTranslteX(this, Flonarnia.flobjects, value) != null){
             return;
         }
 
@@ -74,8 +74,8 @@ public class Character extends Flobject {
     protected void moveY(int value, boolean run) {
         animation.setWidthHeight(width,height);
         this.setTranslateY(this.getTranslateY() + value);
-        rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
-        if (Collision.checkTranslteY(this, Flonarnia.flobjects, value)){
+        //rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
+        if (Collision.checkTranslteY(this, Flonarnia.flobjects, value) != null){
             return;
         }
 

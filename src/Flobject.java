@@ -31,9 +31,22 @@ public class Flobject extends Pane {
         visual.setStrokeWidth(3);
         visual.setFill(Color.TRANSPARENT);
         visual.setStroke(Color.YELLOW);
+        this.setOnMouseClicked(event -> {
+            Flonarnia.targetPanel.changeTarget(this.getClass().getName());
+        });
 
         getChildren().addAll(this.imageView, visual);
+
+        this.translateXProperty().addListener((obs, old, newValue)->{
+            this.rect.setTranslateX(newValue.doubleValue() + WIDTH/4);
+        });
+        this.translateYProperty().addListener((obs, old, newValue)->{
+            this.rect.setTranslateY(newValue.doubleValue() + HEIGHT/2);
+        });
     }
     public Flobject(){
+        this.setOnMouseClicked(event -> {
+            Flonarnia.targetPanel.changeTarget(this.getClass().getName());
+        });
     }
 }

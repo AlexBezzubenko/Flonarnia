@@ -1,12 +1,19 @@
+import Panels.Panel;
+import Panels.TargetPanel;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -28,6 +35,7 @@ public class Flonarnia {
     public static Pane gameRoot = new Pane();
     public static Pane backgroundRoot = new Pane(); //reislor
     public static Pane foregroundRoot = new Pane(); //reislor
+    public static TargetPanel targetPanel;
 
     NPC guider = new NPC(900, 900, "guider");
     NPC warrior = new NPC(900, 1000, "warrior");
@@ -35,7 +43,7 @@ public class Flonarnia {
     NPC trader = new NPC(1000, 1000, "trader");
     NPC gatekeeper = new NPC(1100, 900, "gatekeeper");
     NPC blacksmith = new NPC(1100, 1000, "blacksmith");
-    Enemy buffalo = new Enemy(1000, 700, "buffalo");
+    Enemy buffalo = new Enemy(1700, 700, "buffalo");
     Enemy dark_soul = new Enemy(1100, 700, "dark_soul2");
     Enemy dragon = new Enemy(1200, 700, "dragon");
     Enemy ogre = new Enemy(1400, 700, "ogre");
@@ -49,7 +57,7 @@ public class Flonarnia {
         this.primaryStage = primaryStage;
         APP_W = primaryStage.getWidth();
         APP_H = primaryStage.getHeight();
-        double x = APP_W / 4 + 600;
+        double x = APP_W / 4 + 600 + 1000;
         double y = APP_H / 4 + 600;
         player = new Player(x, y);
         //player = new NPC(x, y, "trader");
@@ -141,8 +149,9 @@ public class Flonarnia {
         //gameRoot.getChildren().addAll( player);
         backgroundRoot.getChildren().addAll(gv);//reislor
         foregroundRoot.getChildren().addAll(flobjects);
+        targetPanel = new TargetPanel(APP_W / 2, 0);
         gameRoot.getChildren().addAll(backgroundRoot,foregroundRoot);
-        appRoot.getChildren().addAll(gameRoot);
+        appRoot.getChildren().addAll(gameRoot, targetPanel);
 
         Scene mainScene = new Scene(appRoot, APP_W, APP_W);
         primaryStage.setScene(mainScene);
