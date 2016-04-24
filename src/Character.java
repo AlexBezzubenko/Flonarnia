@@ -30,7 +30,6 @@ public class Character extends Flobject {
         offsetY = params[1];
         WIDTH = params[2];
         HEIGHT = params[3];
-
         imageView.setViewport(new Rectangle2D(offsetX,offsetY,WIDTH,HEIGHT));
         animation = new SpriteAnimation(this.imageView, Duration.millis(1000),columns,offsetX,offsetY,WIDTH,HEIGHT);
         animation.setCycleCount(1);

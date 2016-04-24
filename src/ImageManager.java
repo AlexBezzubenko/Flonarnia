@@ -24,6 +24,7 @@ public class ImageManager {
         images.put("HOUSE", new Image(getClass().getResourceAsStream("res/house_type1.gif")));
         images.put("NPC", new Image(getClass().getResourceAsStream("res/NPC_1.png")));
 
+
         images.put("BUFFALO",new Image(getClass().getResourceAsStream("res/buffalo.png")));
         images.put("DARK_SOUL",new Image(getClass().getResourceAsStream("res/dark_soul.png")));
         images.put("DARK_SOUL2",new Image(getClass().getResourceAsStream("res/dark_soul2.png")));

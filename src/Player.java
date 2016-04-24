@@ -3,6 +3,7 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.binding.Bindings;
+import javafx.geometry.NodeOrientation;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.CacheHint;
@@ -19,6 +20,7 @@ import javafx.util.Duration;
  */
 
 public class Player  extends Character {
+    public Flobject target;
     public Player(double translateX, double translateY){
         super(translateX, translateY, "player");
     }
@@ -37,18 +39,29 @@ public class Player  extends Character {
 
 
     public void attack(){
+        if (target != null && target != this){
+            if (target.getClass() == Enemy.class){
+                double distance = target.getTranslateX() - this.getTranslateX();
+                System.out.println(distance);
+                //System.out.print(target.getClass().getName());
+                //((Enemy)target).moveX(50, false);
+            }
+        }
+
         changeSize(60, 70);
         animation.setColumns(5);
         animation.setOffsetX(2);
         animation.setOffsetY(513);
-
+        imageView.setScaleX(-1); ///??????? this displays image to right on 1 width
         animation.play();
         animation.setOnFinished(event -> {
             changeSize(WIDTH, HEIGHT);
+            imageView.setScaleX(1);
             animation.interpolate(0);
         });
     }
     private void changeSize(double width, double height){
+        imageView.setScaleX(1);
         this.width = width;
         this.height = height;
         this.setPrefSize(width,height);
@@ -101,5 +114,8 @@ public class Player  extends Character {
         imageView.setCache(true);
         imageView.setCacheHint(CacheHint.SPEED);
         translateTransition.setOnFinished(event -> {imageView.setEffect(null);});
+    }
+    public void changeTarget(Flobject target){
+        this.target = target;
     }
 }

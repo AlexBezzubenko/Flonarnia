@@ -46,7 +46,9 @@ public class Flobject extends Pane {
     }
     public Flobject(){
         this.setOnMouseClicked(event -> {
+            Flonarnia.player.changeTarget(this);
             Flonarnia.targetPanel.changeTarget(this.getClass().getName());
+            System.out.println(this);
         });
     }
 }

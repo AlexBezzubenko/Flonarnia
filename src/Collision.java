@@ -31,16 +31,16 @@ public class Collision {
 
             if(Math.abs(checking.getTranslateY()- flobject.getTranslateY())<200 ||Math.abs(checking.getTranslateX()- flobject.getTranslateX())<200){
             if(flobject != checking&&checking.getTranslateY() > flobject.getTranslateY()){
-                    System.out.println("front");
-                    System.out.println("player: "+checking.getTranslateY());
-                    System.out.println("other: "+flobject.getTranslateY());
+                    //System.out.println("front");
+                    //System.out.println("player: "+checking.getTranslateY());
+                    //System.out.println("other: "+flobject.getTranslateY());
                     checking.toFront();
 
 
             if(flobject != checking&&checking.getTranslateY() < flobject.getTranslateY()+150){
-                System.out.println("back");
-                System.out.println("player: "+checking.getTranslateY());
-                System.out.println("other: "+flobject.getTranslateY());
+                //System.out.println("back");
+                //System.out.println("player: "+checking.getTranslateY());
+                //System.out.println("other: "+flobject.getTranslateY());
                 checking.toBack();
             }}}
             if(flobject != checking && flobject.rect.getBoundsInParent().intersects(checking.rect.getBoundsInParent())){

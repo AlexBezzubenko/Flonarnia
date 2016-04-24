@@ -171,8 +171,6 @@ public class Enemy extends Flobject {
             moveCircleRadius = 800;
             animation.stop();
         }
-
-
     }
 
     public void stop(){

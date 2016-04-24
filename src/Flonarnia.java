@@ -29,7 +29,7 @@ public class Flonarnia {
     private Stage primaryStage;
     private HashMap<KeyCode, Boolean> keys = new HashMap<>();
     //private NPC player;
-    private Player player;
+    public static Player player;
     int a = 5;
     public static Pane appRoot = new Pane();
     public static Pane gameRoot = new Pane();
@@ -166,7 +166,7 @@ public class Flonarnia {
 
     private boolean shift = false;
     public void update() {
-        if (isPressed(KeyCode.UP) || isPressed(KeyCode.W)) {
+        if (isPressed(KeyCode.UP) || isPressed(KeyCode.W) || isPressed(KeyCode.F1)) {
             player.moveY(-a, shift);
             //enemy.moveY(-a, shift);
             if (player.getTranslateY() < gv.get(4).getTranslateY()){
