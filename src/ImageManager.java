@@ -8,8 +8,14 @@ import java.util.Hashtable;
 public class ImageManager {
 
     private Hashtable<String,Image> images = new Hashtable<>();
-    private Hashtable<String,double[]> NPCimageParams = new Hashtable<>();
+    private Hashtable<String,double[]> NPCImageParams = new Hashtable<>();
     private Hashtable<String,double[]> EnemyImageParams = new Hashtable<>();
+    private Hashtable<String,double[]> FlobjectsImageParams = new Hashtable<>();
+    private Hashtable<String,double[]> HousesImageParams = new Hashtable<>();
+
+
+    private Hashtable<String, Hashtable<String, double[]>> params = new Hashtable<>();
+
     static protected ImageManager instance;
 
     public static ImageManager getInstance(){
@@ -22,6 +28,7 @@ public class ImageManager {
         images.put("PLAYER",new Image(getClass().getResourceAsStream("res/PLAYER.png")));
         images.put("TREE", new Image(getClass().getResourceAsStream("res/tree_0.png")));
         images.put("HOUSE", new Image(getClass().getResourceAsStream("res/house_type1.gif")));
+        images.put("TYPEDHOUSE", new Image(getClass().getResourceAsStream("res/house.png")));
         images.put("NPC", new Image(getClass().getResourceAsStream("res/NPC_1.png")));
 
 
@@ -39,22 +46,40 @@ public class ImageManager {
         EnemyImageParams.put("undead", new double[]{0, 0, 80, 96, 3});
         EnemyImageParams.put("ogre", new double[]{0, 0, 107, 144, 4});
 
-        NPCimageParams.put("player", new double[]{0, 0, 32, 60});
-        NPCimageParams.put("guider", new double[]{0, 0, 32, 60});
-        NPCimageParams.put("warrior", new double[]{0, 268, 32, 60});
-        NPCimageParams.put("shaman", new double[]{210, 278, 31, 52});
-        NPCimageParams.put("trader", new double[]{212, 0, 32, 60});
-        NPCimageParams.put("blacksmith", new double[]{624, 0, 32, 63});
-        NPCimageParams.put("gatekeeper", new double[]{421, 0, 32, 60});
+        NPCImageParams.put("player", new double[]{0, 0, 32, 60, 6});
+        NPCImageParams.put("guider", new double[]{0, 0, 32, 60, 6});
+        NPCImageParams.put("warrior", new double[]{0, 268, 32, 60, 6});
+        NPCImageParams.put("shaman", new double[]{210, 278, 31, 52, 6});
+        NPCImageParams.put("trader", new double[]{212, 0, 32, 60, 6});
+        NPCImageParams.put("blacksmith", new double[]{624, 0, 32, 63, 6});
+        NPCImageParams.put("gatekeeper", new double[]{421, 0, 32, 60, 6});
+
+        double houseScale = 1.5;
+        HousesImageParams.put("house_type_1", new double[]{519,12,100 * houseScale, 220 * houseScale, 1});
+        HousesImageParams.put("house_type_2", new double[]{632,12,100 * houseScale, 220 * houseScale, 1});
+        HousesImageParams.put("house_type_3", new double[]{744,12,100 * houseScale, 220 * houseScale, 1});
+        HousesImageParams.put("house_type_4", new double[]{857,12,100 * houseScale, 220 * houseScale, 1});
+
+        FlobjectsImageParams.put("tree", new double[]{0, 0, 150, 200, 1});
+        FlobjectsImageParams.put("house", new double[]{0, 0, 225, 300, 1});
+
+        params.put("NPC", NPCImageParams);
+        params.put("Enemy", EnemyImageParams);
+        params.put("Flobjects", FlobjectsImageParams);
+        params.put("Houses", HousesImageParams);
     }
 
     public Image getImage(String key){
         return images.get(key);
     }
     public double[] getNPCImageParams(String key){
-        return NPCimageParams.get(key);
+        return NPCImageParams.get(key);
     }
     public double[] getEnemyImageParams(String key){
         return EnemyImageParams.get(key);
+    }
+
+    public double[] getParams(String paramName, String objectName){
+        return params.get(paramName).get(objectName);
     }
 }

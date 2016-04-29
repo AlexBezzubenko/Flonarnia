@@ -3,37 +3,30 @@
  */
 
 import javafx.geometry.Rectangle2D;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class House extends Flobject{
 
-    private final double HEIGHT = 200;
-    private final double WIDTH = 225;
+    private final double height = 200;
+    private final double width = 225;
     public House(double translateX, double translateY){
-        super(translateX, translateY, 225, 300);
-
+        super(translateX, translateY, "Flobjects", "house");
         imageView.setViewport(new Rectangle2D(0,0,140,160));
-
-        rect.setWidth(WIDTH );
-        rect.setHeight(HEIGHT );
+        rect.setWidth(width);
+        rect.setHeight(height);
         rect.setTranslateY(translateY+100);
         rect.setTranslateX(translateX);
     }
 
     public House(double translateX, double translateY,int type){
-        super(translateX, translateY, 225, 300);
+        super(translateX, translateY, "Flobjects", "house");
         switch (type){
             case 1:
                 imageView.setViewport(new Rectangle2D(0,0,150,160));
             case 2:
                 imageView.setViewport(new Rectangle2D(160,0,144,160));
         }
-        rect.setWidth(WIDTH );
-        rect.setHeight(HEIGHT );
+        rect.setWidth(width);
+        rect.setHeight(height);
         rect.setTranslateY(translateY+100);
         rect.setTranslateX(translateX);
     }

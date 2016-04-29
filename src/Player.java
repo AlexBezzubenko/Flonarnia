@@ -1,18 +1,6 @@
-import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
-import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
-import javafx.beans.binding.Bindings;
-import javafx.geometry.NodeOrientation;
-import javafx.geometry.Point2D;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.CacheHint;
-import javafx.scene.effect.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.effect.ColorAdjust;
 import javafx.util.Duration;
 
 /**
@@ -20,7 +8,8 @@ import javafx.util.Duration;
  */
 
 public class Player  extends Character {
-    public Flobject target;
+    private final int attackRadius = 100;
+    private Flobject target;
     public Player(double translateX, double translateY){
         super(translateX, translateY, "player");
     }
@@ -39,22 +28,29 @@ public class Player  extends Character {
 
 
     public void attack(){
-        if (target != null && target != this){
-            if (target.getClass() == Enemy.class){
-                double distance = target.getTranslateX() - this.getTranslateX();
-                System.out.println(distance);
-                //System.out.print(target.getClass().getName());
-                //((Enemy)target).moveX(50, false);
-            }
+        changeSize(60, 70);
+        if (target != null && target.getTranslateX() - this.getTranslateX() < 0){
+            imageView.setScaleX(-1); ///??????? this displays image to right on 1 width
         }
 
-        changeSize(60, 70);
         animation.setColumns(5);
         animation.setOffsetX(2);
         animation.setOffsetY(513);
-        imageView.setScaleX(-1); ///??????? this displays image to right on 1 width
+
         animation.play();
         animation.setOnFinished(event -> {
+            if (target != null && target != this && target.getClass() == Enemy.class){
+                double distance = target.getTranslateX() - this.getTranslateX();
+                if (distance < 0){
+                    imageView.setScaleX(-1); ///??????? this displays image to right on 1 width
+                }
+                if (Math.abs(distance) <= attackRadius){
+                    Flonarnia.foregroundRoot.getChildren().remove(target);
+                    Flonarnia.flobjects.remove(target);
+                    target = null;
+                }
+            }
+
             changeSize(WIDTH, HEIGHT);
             imageView.setScaleX(1);
             animation.interpolate(0);
@@ -100,19 +96,17 @@ public class Player  extends Character {
             }
         }
 
-        ColorAdjust monochrome = new ColorAdjust();
-        monochrome.setSaturation(-1.0);
+        ColorAdjust blackout = new ColorAdjust();
 
-        Blend blush;
-        blush = new Blend(
-                BlendMode.MULTIPLY,
-                monochrome,
-                new ColorInput(0, 0, WIDTH, HEIGHT, Color.RED)
-        );
-        imageView.setEffect(blush);
+        blackout.setContrast(0.2);
+        blackout.setHue(-0.25);
+        blackout.setBrightness(0);
+        blackout.setSaturation(0.5);
 
+        imageView.setEffect(blackout);
         imageView.setCache(true);
         imageView.setCacheHint(CacheHint.SPEED);
+
         translateTransition.setOnFinished(event -> {imageView.setEffect(null);});
     }
     public void changeTarget(Flobject target){

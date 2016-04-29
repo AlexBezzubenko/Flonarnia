@@ -1,15 +1,12 @@
+
 /**
  * Created by Alexander on 04.04.2016.
  */
 
-
-
 public class Tree  extends Flobject {
-    private final double HEIGHT = 200;
-    private final double WIDTH = 150;
-
     public Tree(double translateX, double translateY){
-        super(translateX, translateY, 150, 200);
+        super(translateX, translateY, "Flobjects", "tree");
+
         rect.setWidth(WIDTH /2);
         rect.setHeight(HEIGHT/2 );
         rect.setTranslateY(translateY + HEIGHT / 2);

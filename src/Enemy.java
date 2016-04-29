@@ -15,14 +15,8 @@ import javafx.util.Duration;
 //        name = "dragon";
 
 public class Enemy extends Flobject {
-    protected final double WIDTH;
-    protected final double HEIGHT;
-    protected final double offsetX;
-    protected final double offsetY;
-
-    protected int columns = 3;
-    protected double width = 32;
-    protected double height = 60;
+    protected double width;
+    protected double height;
 
     protected boolean right = true;
     protected boolean top = false;
@@ -33,32 +27,10 @@ public class Enemy extends Flobject {
 
     protected SpriteAnimation animation;
 
-    public Enemy(double translateX, double translateY, String name) {
-        image = ImageManager.getInstance().getImage(name.toUpperCase());
-        imageView = new ImageView(image);
-
-        double[] params = ImageManager.getInstance().getEnemyImageParams(name);
-        offsetX = params[0];
-        offsetY = params[1];
-        WIDTH = params[2];
-        HEIGHT = params[3];
-        columns = (int)params[4];
+    public Enemy(double translateX, double translateY, String species) {
+        super(translateX, translateY, "Enemy", species);
         width = WIDTH;
         height = HEIGHT;
-
-        this.setTranslateX(translateX);
-        this.setTranslateY(translateY);
-        this.setPrefSize(WIDTH,HEIGHT);
-
-        imageView.setFitWidth(WIDTH);
-        imageView.setFitHeight(HEIGHT);
-        imageView.setViewport(new Rectangle2D(offsetX,offsetY,WIDTH, HEIGHT));
-
-        visual = new Rectangle(WIDTH/4, HEIGHT/2, WIDTH /2 , HEIGHT /2);
-        visual.setStrokeWidth(3);
-        visual.setFill(Color.TRANSPARENT);
-        visual.setStroke(Color.YELLOW);
-
 
         animation = new SpriteAnimation(this.imageView, Duration.millis(1000),columns,offsetX,offsetY,WIDTH,HEIGHT);
         animation.setCycleCount(1);
@@ -67,15 +39,6 @@ public class Enemy extends Flobject {
         rect.setTranslateY(translateY + HEIGHT / 2);
         rect.setTranslateX(translateX + WIDTH /4);
         //this.getChildren().removeAll(this.visual);
-        this.translateXProperty().addListener((obs, old, newValue)->{
-            this.rect.setTranslateX(newValue.doubleValue() + WIDTH/4);
-        });
-        this.translateYProperty().addListener((obs, old, newValue)->{
-            this.rect.setTranslateY(newValue.doubleValue() + HEIGHT/2);
-        });
-
-
-        getChildren().addAll(this.imageView, visual);
     }
 
     protected void moveX(int value, boolean run){

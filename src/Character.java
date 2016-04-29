@@ -5,14 +5,8 @@ import javafx.util.Duration;
  * Created by Alexander on 15.04.2016.
  */
 public class Character extends Flobject {
-    protected final double WIDTH;
-    protected final double HEIGHT;
-    protected final double offsetX;
-    protected final double offsetY;
-
-    protected int columns = 6;
-    protected double width = 32;
-    protected double height = 60;
+    protected double width;
+    protected double height;
 
     protected boolean right = true;
     protected boolean top = false;
@@ -24,20 +18,17 @@ public class Character extends Flobject {
     protected SpriteAnimation animation;
 
     public Character(double translateX, double translateY, String name) {
-        super(translateX, translateY, 32, 60);
-        double[] params = ImageManager.getInstance().getNPCImageParams(name);
-        offsetX = params[0];
-        offsetY = params[1];
-        WIDTH = params[2];
-        HEIGHT = params[3];
-        imageView.setViewport(new Rectangle2D(offsetX,offsetY,WIDTH,HEIGHT));
+        super(translateX, translateY, "NPC", name);
+        width = WIDTH;
+        height = HEIGHT;
+
         animation = new SpriteAnimation(this.imageView, Duration.millis(1000),columns,offsetX,offsetY,WIDTH,HEIGHT);
         animation.setCycleCount(1);
         rect.setWidth(WIDTH / 2);
         rect.setHeight(HEIGHT / 2);
         rect.setTranslateY(translateY + HEIGHT / 2);
         rect.setTranslateX(translateX + WIDTH /4);
-        this.getChildren().removeAll(this.visual);
+        //this.getChildren().removeAll(this.visual);
     }
 
     protected void moveX(int value, boolean run){
@@ -98,7 +89,7 @@ public class Character extends Flobject {
         animation.play();
         animation.onFinishedProperty().set(actionEvent -> isRunning = true);
     }
-    public void moveCircle(int velocity){
+    public void moveCircle(int velocity) throws InterruptedException {
         /*if(getTranslateX() > 300 - width) {
             right = false;
             bottom = true;
@@ -141,10 +132,13 @@ public class Character extends Flobject {
             moveX(-velocity, false);
             animation.play();
         }
+        else if (moveCircleRadius < -800 || moveCircleRadius > 800){
+            animation.stop();
+        }
         moveCircleRadius -= velocity;
 
         if (moveCircleRadius < -800){
-            moveCircleRadius = 800;
+            moveCircleRadius = 1200;
             animation.stop();
         }
 

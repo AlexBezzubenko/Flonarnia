@@ -1,19 +1,14 @@
-import Panels.Panel;
+
 import Panels.TargetPanel;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -27,20 +22,22 @@ public class Flonarnia {
     private final double APP_W;
     private final double APP_H;
     private Stage primaryStage;
+
     private HashMap<KeyCode, Boolean> keys = new HashMap<>();
-    //private NPC player;
     public static Player player;
+
     int a = 5;
+
     public static Pane appRoot = new Pane();
     public static Pane gameRoot = new Pane();
     public static Pane backgroundRoot = new Pane(); //reislor
     public static Pane foregroundRoot = new Pane(); //reislor
     public static TargetPanel targetPanel;
 
-    NPC guider = new NPC(900, 900, "guider");
-    NPC warrior = new NPC(900, 1000, "warrior");
-    NPC shaman = new NPC(1000, 900, "shaman");
-    NPC trader = new NPC(1000, 1000, "trader");
+    NPC guider = new NPC(2000, 510, "guider");
+    NPC warrior = new NPC(2200, 510, "warrior");
+    NPC shaman = new NPC(2400, 510, "shaman");
+    NPC trader = new NPC(2600, 510, "trader");
     NPC gatekeeper = new NPC(1100, 900, "gatekeeper");
     NPC blacksmith = new NPC(1100, 1000, "blacksmith");
     Enemy buffalo = new Enemy(1700, 700, "buffalo");
@@ -49,7 +46,16 @@ public class Flonarnia {
     Enemy ogre = new Enemy(1400, 700, "ogre");
     Enemy undead = new Enemy(1300, 700, "undead");
 
+    Flobject[] houses = new Flobject[]{
+            new TypedHouse(1900, 200, "house_type_1"),
+            new TypedHouse(2100, 200, "house_type_2"),
+            new TypedHouse(2300, 200, "house_type_3"),
+            new TypedHouse(2500, 200, "house_type_4")
+    };
+
+
     public static ArrayList<Flobject> flobjects = new ArrayList<>();
+
 
     ArrayList<ImageView> gv = new ArrayList<>();
 
@@ -60,7 +66,6 @@ public class Flonarnia {
         double x = APP_W / 4 + 600 + 1000;
         double y = APP_H / 4 + 600;
         player = new Player(x, y);
-        //player = new NPC(x, y, "trader");
         gameRoot.setLayoutX( -(x - APP_W / 2));
         gameRoot.setLayoutY( -(y - APP_H / 2));
     }
@@ -78,17 +83,18 @@ public class Flonarnia {
             @Override
             public void handle(long now) {
                 //player.moveCircle(1);
-                guider.moveCircle(1);
-                trader.moveCircle(1);
-                blacksmith.moveCircle(1);
-                gatekeeper.moveCircle(1);
-                shaman.moveCircle(1);
-                warrior.moveCircle(1);
-                dragon.moveCircle(1);
-                dark_soul.moveCircle(1);
-                buffalo.moveCircle(1);
-                ogre.moveCircle(1);
-                undead.moveCircle(1);
+                for (Flobject f:flobjects){
+                    if (f.getClass() == Enemy.class){
+                        ((Enemy)f).moveCircle(1);
+                    }
+                    if (f.getClass() == NPC.class){
+                        try {
+                            ((NPC) f).moveCircle(1);
+                        } catch (InterruptedException e){
+
+                        }
+                    }
+                }
                 update();
             }
         };
@@ -126,6 +132,9 @@ public class Flonarnia {
                 //grassView.setLayoutY( -(offset - APP_H /2 ));
             }
         });
+        for (Flobject f: houses){
+            flobjects.add(f);
+        }
         flobjects.add(player);
         flobjects.add(new Tree(500, 400));
         flobjects.add(new Tree(500, 600));
@@ -143,6 +152,7 @@ public class Flonarnia {
         flobjects.add(buffalo);
         flobjects.add(ogre);
         flobjects.add(undead);
+
 
         gameRoot.getChildren().addAll(gv);
 
