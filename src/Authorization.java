@@ -28,7 +28,7 @@ public class Authorization {
     public Parent createContent(){
         Pane root = new Pane();
         root.setPrefSize(APP_W, APP_H);
-        //Image backgroundImg = new Image(getClass().getResourceAsStream("res/loginBackground.jpg"));
+        /* Image backgroundImg = new Image(getClass().getResourceAsStream("res/loginBackground.jpg")); */
         Image backgroundImg = new Image(getClass().getResourceAsStream("res/123.png"));
         ImageView background = new ImageView(backgroundImg);
         Image backgroundRectImage = new Image(getClass().getResourceAsStream("res/logbackrect.png"));

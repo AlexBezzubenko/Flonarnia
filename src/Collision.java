@@ -1,5 +1,3 @@
-import javafx.scene.shape.Circle;
-
 import java.util.ArrayList;
 
 /**

@@ -1,4 +1,4 @@
-
+import Panels.Inventory;
 import Panels.TargetPanel;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Rectangle2D;
@@ -33,6 +33,7 @@ public class Flonarnia {
     public static Pane backgroundRoot = new Pane(); //reislor
     public static Pane foregroundRoot = new Pane(); //reislor
     public static TargetPanel targetPanel;
+    public Inventory inventory;
 
     NPC guider = new NPC(2000, 510, "guider");
     NPC warrior = new NPC(2200, 510, "warrior");
@@ -96,6 +97,9 @@ public class Flonarnia {
                     }
                 }
                 update();
+                if (now % 100 == 0)
+                    System.out.println(keys);
+
             }
         };
         timer.start();
@@ -160,23 +164,21 @@ public class Flonarnia {
         backgroundRoot.getChildren().addAll(gv);//reislor
         foregroundRoot.getChildren().addAll(flobjects);
         targetPanel = new TargetPanel(APP_W / 2, 0);
+        inventory = new Inventory(APP_W / 3, APP_H / 4);
         gameRoot.getChildren().addAll(backgroundRoot,foregroundRoot);
-        appRoot.getChildren().addAll(gameRoot, targetPanel);
+        appRoot.getChildren().addAll(gameRoot, targetPanel, inventory);
 
         Scene mainScene = new Scene(appRoot, APP_W, APP_W);
         primaryStage.setScene(mainScene);
         mainScene.setOnKeyPressed(event->keys.put(event.getCode(),true));
 
-        mainScene.setOnKeyReleased(event-> {
-            keys.put(event.getCode(), false);
-            player.stop();
-        });
+        mainScene.setOnKeyReleased(event->keys.put(event.getCode(), false));
     }
 
 
     private boolean shift = false;
     public void update() {
-        if (isPressed(KeyCode.UP) || isPressed(KeyCode.W) || isPressed(KeyCode.F1)) {
+        if (isPressed(KeyCode.UP) || isPressed(KeyCode.W)) {
             player.moveY(-a, shift);
             //enemy.moveY(-a, shift);
             if (player.getTranslateY() < gv.get(4).getTranslateY()){
@@ -210,19 +212,33 @@ public class Flonarnia {
                 }
             }
         }
-        else if (isPressed(KeyCode.SHIFT)){
-            shift = !shift;
-        }
         else if (isPressed(KeyCode.F)){
             player.attack();
-        } else if (isPressed(KeyCode.Q)){
-            player.setTranslateX(APP_W / 2);
-            player.setTranslateY(APP_H / 2);
         }
+        else {
+            player.stop();
+        }
+
+        if (isReleased(KeyCode.SHIFT)){
+            shift = !shift;
+            setKeyIsPressed(KeyCode.SHIFT);
+        }
+        if (isReleased(KeyCode.I)){
+            boolean isVisibleInventory = inventory.isVisible();
+            inventory.setVisible(!isVisibleInventory);
+            setKeyIsPressed(KeyCode.I);
+        }
+
 
     }
     public boolean isPressed(KeyCode key) {
         return keys.getOrDefault(key, false);
+    }
+    public boolean isReleased(KeyCode key) {
+        return !keys.getOrDefault(key, true);
+    }
+    public void setKeyIsPressed(KeyCode key){
+        keys.put(key, true);
     }
 
 }

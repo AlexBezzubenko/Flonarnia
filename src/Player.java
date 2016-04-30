@@ -3,6 +3,8 @@ import javafx.scene.CacheHint;
 import javafx.scene.effect.ColorAdjust;
 import javafx.util.Duration;
 
+import java.lang.*;
+
 /**
  * Created by Alexander on 22.03.2016.
  */
