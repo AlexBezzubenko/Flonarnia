@@ -36,11 +36,11 @@ public class Character extends Flobject {
         //this.getChildren().removeAll(this.visual);
     }
 
-    protected void moveX(int value, boolean run){
+    protected void moveX(double value, boolean run){
         this.setTranslateX(this.getTranslateX() + value);
         //rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
 
-        if (Collision.checkTranslteX(this, Flonarnia.flobjects, value) != null){
+        if (Collision.checkTranslateX(this, Flonarnia.flobjects, value) != null){
             return;
         }
 
@@ -66,11 +66,11 @@ public class Character extends Flobject {
         animation.onFinishedProperty().set(actionEvent -> isRunning = true);
     }
 
-    protected void moveY(int value, boolean run) {
+    protected void moveY(double value, boolean run) {
         animation.setWidthHeight(width,height);
         this.setTranslateY(this.getTranslateY() + value);
         //rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
-        if (Collision.checkTranslteY(this, Flonarnia.flobjects, value) != null){
+        if (Collision.checkTranslateY(this, Flonarnia.flobjects, value) != null){
             return;
         }
 
@@ -94,7 +94,7 @@ public class Character extends Flobject {
         animation.play();
         animation.onFinishedProperty().set(actionEvent -> isRunning = true);
     }
-    public void moveCircle(int velocity) throws InterruptedException {
+    public void moveCircle(double velocity) throws InterruptedException {
         /*if(getTranslateX() > 300 - width) {
             right = false;
             bottom = true;

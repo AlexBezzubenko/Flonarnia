@@ -7,112 +7,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ee6f4bd-5228-4f4e-a02b-b7cb7b1b01f0" name="Default" comment="2">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Flonarnia/Panels/InventoryPanel.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Authorization$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Authorization.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Character.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Collision.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Enemy.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flobject.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/House.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/ImageManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Loader$1ResourceLoadingTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Loader$LoadingCircle.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Loader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Location.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/NPC.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Panels/Inventory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Panels/Panel$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Panels/Panel$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Panels/Panel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Panels/TargetPanel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Player.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Registration.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/SpriteAnimation.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Tree.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/TypedHouse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/file.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/-emHoBij9ts.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/-emHoBij9ts2222.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/123.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/Desert_Cave_Part_1_-Battle_Backdrop.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/NPC.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/NPC_.pxd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/NPC_0.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/NPC_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/PLAYER.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/background.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/background2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/buffalo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/dark_soul.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/dark_soul2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/dragon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/grass.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/grassBackground.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/house.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/house_type1.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/logbackrect.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/loginBackground.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/map.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/ogre.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/rectback.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/tree_0.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/res/undead.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Character.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/House.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/NPC.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Panels/Inventory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Player.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/tools/Authorization$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/tools/Authorization.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/tools/Registration.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/tools/res/poisons2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/123.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/Desert_Cave_Part_1_-Battle_Backdrop.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/NPC_.pxd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/NPC_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/NPC_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/background.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/background2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/dark_soul2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/grass.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/grassBackground.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/items2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/items3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/poisons2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/rectback.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/tree_0.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Flobjects/Flobject.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Flobjects/Flobject.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Heroes/Character.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Heroes/Character.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Heroes/Enemy.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Heroes/Enemy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Heroes/NPC.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Heroes/NPC.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Heroes/Player.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Heroes/Player.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/Cell.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/Cell.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/InventoryItem.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/InventoryItem.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/SkillPanel.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/SkillPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/TargetPanel.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/TargetPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/TradePanel$1.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/TradePanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/TradePanel.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Panels/TradePanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Scenes/Flonarnia$1.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Scenes/Flonarnia$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Scenes/Flonarnia.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/Scenes/Flonarnia.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/tools/Collision.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/tools/Collision.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/tools/ImageManager.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Flonarnia/tools/ImageManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Flonarnia/Launcher.class" afterPath="$PROJECT_DIR$/out/production/Flonarnia/Launcher.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/NPC.png" afterPath="$PROJECT_DIR$/src/Flonarnia/tools/res/NPC.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/dark_soul.png" afterPath="$PROJECT_DIR$/src/Flonarnia/tools/res/dark_soul.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/res/items.png" afterPath="$PROJECT_DIR$/src/Flonarnia/tools/res/items.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Alexander.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Alexander.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Flobjects/Flobject.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Flobjects/Flobject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Heroes/Character.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Heroes/Character.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Heroes/Enemy.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Heroes/Enemy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Heroes/NPC.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Heroes/NPC.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Heroes/Player.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Heroes/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Panels/Cell.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Panels/Cell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Panels/InventoryItem.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Panels/InventoryItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Panels/SkillPanel.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Panels/SkillPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Panels/TargetPanel.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Panels/TargetPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Panels/TradePanel.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Panels/TradePanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Scenes/Flonarnia.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Scenes/Flonarnia.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/Scenes/Loader.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Scenes/Loader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/Collision.java" afterPath="$PROJECT_DIR$/src/Flonarnia/tools/Collision.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/ImageManager.java" afterPath="$PROJECT_DIR$/src/Flonarnia/tools/ImageManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Launcher.java" afterPath="$PROJECT_DIR$/src/Launcher.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/23.mp3" afterPath="$PROJECT_DIR$/src/Flonarnia/23.mp3" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Authorization.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Authorization.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Character.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Heroes/Character.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Collision.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Collision.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Enemy.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Heroes/Enemy.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Flobject.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Flobject.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Flonarnia.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Flonarnia.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/House.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Flobjects/House.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ImageManager.java" afterPath="$PROJECT_DIR$/src/Flonarnia/ImageManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Loader.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Loader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Location.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Location.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NPC.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Heroes/NPC.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Panels/Panel.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Panels/Panel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Panels/TargetPanel.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Panels/TargetPanel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Player.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Heroes/Player.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SpriteAnimation.java" afterPath="$PROJECT_DIR$/src/Flonarnia/SpriteAnimation.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Tree.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Tree.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TypedHouse.java" afterPath="$PROJECT_DIR$/src/Flonarnia/TypedHouse.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/file.txt" afterPath="$PROJECT_DIR$/src/Flonarnia/file.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/-emHoBij9ts.jpg" afterPath="$PROJECT_DIR$/src/Flonarnia/res/-emHoBij9ts.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/-emHoBij9ts2222.jpg" afterPath="$PROJECT_DIR$/src/Flonarnia/res/-emHoBij9ts2222.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/123.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/123.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/Desert_Cave_Part_1_-Battle_Backdrop.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/Desert_Cave_Part_1_-Battle_Backdrop.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/NPC.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/NPC.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/NPC_.pxd" afterPath="$PROJECT_DIR$/src/Flonarnia/res/NPC_.pxd" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/NPC_0.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/NPC_0.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/NPC_1.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/NPC_1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/PLAYER.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/PLAYER.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/background.jpg" afterPath="$PROJECT_DIR$/src/Flonarnia/res/background.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/background2.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/background2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/buffalo.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/buffalo.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/dark_soul.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/dark_soul.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/dark_soul2.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/dark_soul2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/dragon.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/dragon.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/grass.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/grass.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/grassBackground.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/grassBackground.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/house.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/house.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/house_type1.gif" afterPath="$PROJECT_DIR$/src/Flonarnia/res/house_type1.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/logbackrect.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/logbackrect.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/loginBackground.jpg" afterPath="$PROJECT_DIR$/src/Flonarnia/res/loginBackground.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/map.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/map.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/ogre.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/ogre.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/rectback.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/rectback.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/tree_0.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/tree_0.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/undead.png" afterPath="$PROJECT_DIR$/src/Flonarnia/res/undead.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Flonarnia/tools/Authorization.java" afterPath="$PROJECT_DIR$/src/Flonarnia/Scenes/Authorization.java" />
     </list>
     <ignored path="Flonarnia.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -134,58 +84,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NPC.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/NPC.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TradePanel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/TradePanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.6287425">
-              <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-              <folding>
-                <element signature="class#953:1197" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InventoryItem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/InventoryItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Panel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/Panel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Flonarnia.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Flonarnia/Scenes/Flonarnia.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+              <caret line="135" column="51" selection-start-line="135" selection-start-column="51" selection-end-line="135" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#Flonarnia#0;class#Flonarnia#0" expanded="false" />
+                <element signature="method#enemyActivate#0;class#Flonarnia#0" expanded="false" />
+                <element signature="method#update#0;class#Flonarnia#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StrategyAttack.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/StrategyAttack.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.24343675">
+              <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StrategyChaotic.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/StrategyChaotic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="105" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -195,25 +126,34 @@
         <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Player.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+              <caret line="193" column="9" selection-start-line="193" selection-start-column="9" selection-end-line="193" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#moveY#0;class#Player#0" expanded="false" />
+                <element signature="method#attack#0;class#Player#0" expanded="false" />
+                <element signature="method#changeSize#0;class#Player#0" expanded="false" />
+                <element signature="method#attacked#0;class#Player#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InventoryPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/InventoryPanel.java">
+      <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Character.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1160#1161#0" expanded="true" />
-                <element signature="e#1250#1251#0" expanded="true" />
-              </folding>
+              <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/ImageManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -244,16 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Tree.java" />
-        <option value="$PROJECT_DIR$/src/TypedHouse.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia2.java" />
-        <option value="$PROJECT_DIR$/src/Enemy.java" />
-        <option value="$PROJECT_DIR$/src/Flobject.java" />
-        <option value="$PROJECT_DIR$/src/Character.java" />
-        <option value="$PROJECT_DIR$/src/Panels/TargetPanel.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/Panels/Inventory.java" />
-        <option value="$PROJECT_DIR$/src/Panels/Inventory.java" />
-        <option value="$PROJECT_DIR$/src/Panels/Panel.java" />
         <option value="$PROJECT_DIR$/src/Panels/SkillPanel.java" />
         <option value="$PROJECT_DIR$/src/Flonarnia/Launcher.java" />
         <option value="$PROJECT_DIR$/src/Location.java" />
@@ -276,25 +206,35 @@
         <option value="$PROJECT_DIR$/src/Flonarnia/ImageManager.java" />
         <option value="$PROJECT_DIR$/src/Flonarnia/Authorization.java" />
         <option value="$PROJECT_DIR$/src/Flonarnia/Loader.java" />
-        <option value="$PROJECT_DIR$/src/Launcher.java" />
         <option value="$PROJECT_DIR$/src/Flonarnia/Scenes/Location.java" />
         <option value="$PROJECT_DIR$/src/Flonarnia/Flobjects/Tree.java" />
         <option value="$PROJECT_DIR$/src/Flonarnia/Flobjects/House.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/Enemy.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/tools/ImageManager.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/tools/Collision.java" />
         <option value="$PROJECT_DIR$/src/Flonarnia/Flobjects/TypedHouse.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/Character.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/Panels/Cell.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/Flobjects/Flobject.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/Panels/SkillPanel.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/Panels/TargetPanel.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/Player.java" />
         <option value="$PROJECT_DIR$/src/Flonarnia/Panels/Panel.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/Scenes/Flonarnia.java" />
-        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/NPC.java" />
         <option value="$PROJECT_DIR$/src/Flonarnia/Panels/InventoryPanel.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Panels/InventoryItem.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Flobjects/Flobject.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Panels/TargetPanel.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Panels/SkillPanel.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Panels/HeroPanel.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Panels/Cell.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/NPC.java" />
         <option value="$PROJECT_DIR$/src/Flonarnia/Panels/TradePanel.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/StrategyNormal.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/StrategyRunAway.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/tools/Sort.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/Strategy.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/tools/Collision.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/Enemy.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/StrategyChaotic.java" />
+        <option value="$PROJECT_DIR$/src/Launcher.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Scenes/Authorization.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Scenes/Loader.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/tools/ImageManager.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/Character.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/Player.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Scenes/Flonarnia.java" />
+        <option value="$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/StrategyAttack.java" />
       </list>
     </option>
   </component>
@@ -339,6 +279,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -433,7 +375,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Panels" />
+              <option name="myItemId" value="Scenes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Authorization.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Flonarnia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Flonarnia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Flonarnia" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -477,14 +441,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Flobjects" />
+              <option name="myItemId" value="Heroes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Strategy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -511,17 +477,18 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="L:\Flonarnia\src" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="L:\Flonarnia\src\Flonarnia\res" />
       <recent name="L:\Flonarnia\src\Flonarnia" />
       <recent name="L:\Flonarnia\src" />
       <recent name="L:\Flonarnia\src\res" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="L:\Flonarnia\src\Flonarnia\Scenes" />
+      <recent name="L:\Flonarnia\src" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Launcher">
@@ -819,22 +786,21 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.48937786" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.51062214" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31751227" sideWeight="0.43948564" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27287582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40752864" sideWeight="0.66084975" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23827533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26841244" sideWeight="0.5605144" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13256955" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2344932" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -845,6 +811,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -854,15 +821,15 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.51062214" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31751227" sideWeight="0.43948564" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27287582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40752864" sideWeight="0.66084975" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23827533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14893617" sideWeight="0.5605144" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13256955" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2344932" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -888,7 +855,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="32" />
+      <option name="time" value="34" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -897,67 +864,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/ImageManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="84" selection-start-line="18" selection-start-column="84" selection-end-line="18" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/SpriteAnimation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="82" selection-start-line="57" selection-start-column="82" selection-end-line="57" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/SpriteAnimation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/lang/System.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33246073">
@@ -1049,11 +955,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/res/NPC.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/event/EventHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6666667">
@@ -1096,39 +997,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/res/file.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Scenes/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Scenes/Loader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="78" selection-start-line="32" selection-start-column="78" selection-end-line="32" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1136,7 +1008,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1144,7 +1015,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1152,27 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/Collision.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/ImageManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1180,104 +1029,120 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/Authorization.java">
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/InventoryItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="78" selection-start-line="36" selection-start-column="78" selection-end-line="36" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Flobjects/Flobject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Enemy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/TargetPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/SkillPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="69" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="14" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/Panel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/TargetPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/InventoryPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/SkillPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/TradePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="115" column="28" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#moveY#0;class#Player#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="class#1141:1385" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Scenes/Flonarnia.java">
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/StrategyRunAway.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/StrategyNormal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/Strategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+          <folding>
+            <element signature="e#250#251#0" expanded="false" />
+            <element signature="e#286#287#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/Sort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="53" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Flonarnia#0;class#Flonarnia#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/Collision.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/HeroPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1285,39 +1150,125 @@
     <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/NPC.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+          <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#695#696#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/InventoryPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Scenes/Location.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1160#1161#0" expanded="true" />
-            <element signature="e#1250#1251#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/InventoryItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Panels/TradePanel.java">
+    <entry file="file://$PROJECT_DIR$/src/Launcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6287425">
-          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Scenes/Authorization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="101" column="6" selection-start-line="101" selection-start-column="6" selection-end-line="101" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Scenes/Loader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="106" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding>
-            <element signature="class#953:1197" expanded="false" />
+            <element signature="e#3530#3531#0" expanded="true" />
+            <element signature="e#3573#3574#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="method#stop#0;class#Enemy#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/tools/ImageManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Flobjects/Flobject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="44" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="193" column="9" selection-start-line="193" selection-start-column="9" selection-end-line="193" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#moveY#0;class#Player#0" expanded="false" />
+            <element signature="method#attack#0;class#Player#0" expanded="false" />
+            <element signature="method#changeSize#0;class#Player#0" expanded="false" />
+            <element signature="method#attacked#0;class#Player#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Scenes/Flonarnia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="135" column="51" selection-start-line="135" selection-start-column="51" selection-end-line="135" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#enemyActivate#0;class#Flonarnia#0" expanded="false" />
+            <element signature="method#update#0;class#Flonarnia#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/StrategyChaotic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Flonarnia/Heroes/Strategy/StrategyAttack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24343675">
+          <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

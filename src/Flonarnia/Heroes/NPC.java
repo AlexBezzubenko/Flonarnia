@@ -33,16 +33,24 @@ public class NPC  extends Character {
     @Override
     protected void setTarget(){
         this.setOnMouseClicked(event -> {
+            System.out.println("Changed target: " + this.getClass().getSimpleName());
             Flonarnia.player.changeTarget(this);
-            String name = species.toLowerCase();
-            name = name.substring(0, 1).toUpperCase() + name.substring(1);
-            Flonarnia.targetPanel.changeTarget(name);
+            Flonarnia.targetPanel.changeTarget(species, this.getClass().getSimpleName());
+            switch (species){
+                case "trader":
+                    if (Flonarnia.player != null) {
+                        Flonarnia.tradePanel.createPoisonTrade();
+                        Flonarnia.tradePanel.setVisible(true);
+                    }
+                    break;
+                case "warrior":
+                    if (Flonarnia.player != null) {
+                        Flonarnia.tradePanel.createWeaponTrade();
+                        Flonarnia.tradePanel.setVisible(true);
+                    }
+                    break;
+            }
         });
-
-        switch (species){
-            case "trader":
-                TradePanel tradePanel = new TradePanel(300, 300, Flonarnia.appRoot);
-        }
     }
 }
 

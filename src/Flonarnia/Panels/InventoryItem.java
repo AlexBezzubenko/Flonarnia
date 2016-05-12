@@ -1,5 +1,7 @@
 package Flonarnia.Panels;
 
+import javafx.beans.property.SimpleIntegerProperty;
+
 /**
  * Created by Alexander on 30.04.2016.
  */
@@ -7,20 +9,27 @@ public class InventoryItem {
     public String name;
     public String kind;
     public int amount = 0;
+    public int cost = 0;
+    public SimpleIntegerProperty amountS = new SimpleIntegerProperty();
 
     public InventoryItem(String name, String kind){
         this.name = name;
         this.kind = kind;
     }
-    public InventoryItem(String name, String kind, int amount){
+    public InventoryItem(String name, String kind, int cost){
         this(name, kind);
-        this.amount = amount;
+        this.cost = cost;
     }
+    //public InventoryItem(String name, String kind, int amount){
+    //    this(name, kind);
+    //    this.amount = amount;
+    //}
 
     public void addItem(int value){
-        if (amount + value < 1000)
+        if (amount + value < 1000) {
             amount += value;
-        else
+            amountS.set(amount);
+        }else
             amount = 999;
     }
     public void addItem(){

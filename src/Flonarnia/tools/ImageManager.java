@@ -27,37 +27,36 @@ public class ImageManager {
     }
     protected ImageManager(){
         images.put("PLAYER",new Image(getClass().getResourceAsStream("res/PLAYER.png")));
-        images.put("TREE", new Image(getClass().getResourceAsStream("res/tree_0.png")));
+        images.put("TREE", new Image(getClass().getResourceAsStream("res/tree.png")));
         images.put("HOUSE", new Image(getClass().getResourceAsStream("res/house_type1.gif")));
         images.put("TYPEDHOUSE", new Image(getClass().getResourceAsStream("res/house.png")));
-        images.put("NPC", new Image(getClass().getResourceAsStream("res/NPC_1.png")));
+        images.put("NPC", new Image(getClass().getResourceAsStream("res/NPC.png")));
 
 
         images.put("BUFFALO",new Image(getClass().getResourceAsStream("res/buffalo.png")));
-        images.put("DARK_SOUL",new Image(getClass().getResourceAsStream("res/dark_soul.png")));
-        images.put("DARK_SOUL2",new Image(getClass().getResourceAsStream("res/dark_soul2.png")));
+        images.put("DARK SOUL",new Image(getClass().getResourceAsStream("res/dark_soul.png")));
         images.put("DRAGON", new Image(getClass().getResourceAsStream("res/dragon.png")));
         images.put("OGRE", new Image(getClass().getResourceAsStream("res/ogre.png")));
         images.put("UNDEAD", new Image(getClass().getResourceAsStream("res/undead.png")));
 
         icons.put("poison",  new Image(getClass().getResourceAsStream("res/poisons.png")));
-        icons.put("item",  new Image(getClass().getResourceAsStream("res/items3.png")));
+        icons.put("item",  new Image(getClass().getResourceAsStream("res/items.png")));
+        icons.put("weapon",  new Image(getClass().getResourceAsStream("res/weapons.png")));
 
 
-        EnemyImageParams.put("buffalo", new double[]{0, 0, 96, 96, 3});
-        EnemyImageParams.put("dark_soul", new double[]{0, 0, 138, 131, 4});
-        EnemyImageParams.put("dark_soul2", new double[]{0, 0, 101, 96, 4});
-        EnemyImageParams.put("dragon", new double[]{0, 0, 96, 96, 4});
-        EnemyImageParams.put("undead", new double[]{0, 0, 80, 96, 3});
-        EnemyImageParams.put("ogre", new double[]{0, 0, 107, 144, 4});
+        EnemyImageParams.put("Buffalo", new double[]{0, 0, 96, 96, 3});
+        EnemyImageParams.put("Dark Soul", new double[]{0, 0, 101, 96, 4});
+        EnemyImageParams.put("Dragon", new double[]{0, 0, 96, 96, 4});
+        EnemyImageParams.put("Undead", new double[]{0, 0, 80, 96, 3});
+        EnemyImageParams.put("Ogre", new double[]{0, 0, 107, 144, 4});
 
         NPCImageParams.put("player", new double[]{0, 0, 32, 60, 6});
-        NPCImageParams.put("guider", new double[]{0, 0, 32, 60, 6});
-        NPCImageParams.put("warrior", new double[]{0, 268, 32, 60, 6});
-        NPCImageParams.put("shaman", new double[]{210, 278, 31, 52, 6});
-        NPCImageParams.put("trader", new double[]{212, 0, 32, 60, 6});
-        NPCImageParams.put("blacksmith", new double[]{624, 0, 32, 63, 6});
-        NPCImageParams.put("gatekeeper", new double[]{421, 0, 32, 60, 6});
+        NPCImageParams.put("Guider", new double[]{0, 0, 32, 60, 6});
+        NPCImageParams.put("Warrior", new double[]{0, 268, 32, 60, 6});
+        NPCImageParams.put("Shaman", new double[]{210, 278, 31, 52, 6});
+        NPCImageParams.put("Trader", new double[]{212, 0, 32, 60, 6});
+        NPCImageParams.put("Blacksmith", new double[]{624, 0, 32, 63, 6});
+        NPCImageParams.put("GateKeeper", new double[]{421, 0, 32, 60, 6});
 
         double houseScale = 1.5;
         HousesImageParams.put("house_type_1", new double[]{519,12,100 * houseScale, 220 * houseScale, 1});
@@ -74,6 +73,11 @@ public class ImageManager {
         IconParams.put("health", new double[]{120, 120, 60, 60});
         IconParams.put("endurance", new double[]{120, 60, 60, 60});
         IconParams.put("sword", new double[]{120, 0, 60, 60});
+
+        IconParams.put("Infinity Sharper", new double[]{0, 60, 60, 60});
+        IconParams.put("Periel Sword", new double[]{0, 0, 60, 60});
+        IconParams.put("Infinity Cutter", new double[]{120, 60, 60, 60});
+        IconParams.put("Feather Eye Blade", new double[]{180, 0, 60, 60});
 
         params.put("NPC", NPCImageParams);
         params.put("Enemy", EnemyImageParams);

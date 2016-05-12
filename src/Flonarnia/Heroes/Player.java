@@ -1,12 +1,14 @@
 package Flonarnia.Heroes;
 
 import Flonarnia.Flobjects.Flobject;
+import Flonarnia.Panels.TradePanel;
 import Flonarnia.Scenes.Flonarnia;
 import Flonarnia.Panels.InventoryItem;
 import Flonarnia.Panels.InventoryPanel;
 import Flonarnia.tools.Collision;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableMap;
@@ -22,6 +24,17 @@ import java.lang.*;
 
 public class Player  extends Character {
     public static SimpleIntegerProperty shekelAmount = new SimpleIntegerProperty(1000);
+    public static SimpleIntegerProperty level = new SimpleIntegerProperty(1);
+
+    public static SimpleIntegerProperty healthCapacity = new SimpleIntegerProperty(800);
+    public static SimpleIntegerProperty healthMaxCapacity = new SimpleIntegerProperty(1000);
+
+    public static SimpleIntegerProperty manaCapacity = new SimpleIntegerProperty(800);
+    public static SimpleIntegerProperty manaMaxCapacity = new SimpleIntegerProperty(1000);
+
+    public static SimpleIntegerProperty enduranceCapacity = new SimpleIntegerProperty(800);
+    public static SimpleIntegerProperty enduranceMaxCapacity = new SimpleIntegerProperty(1000);
+
     public InventoryPanel inventoryPanel = new InventoryPanel(300, 300, Flonarnia.appRoot);
     private ObservableMap<String, InventoryItem> inventory = FXCollections.observableHashMap();
 
@@ -42,6 +55,13 @@ public class Player  extends Character {
         });
     }
 
+    public void buyItem(InventoryItem item, int cost){
+        if (shekelAmount.get() - cost >= 0) {
+            addToInventory(item);
+            shekelAmount.set(shekelAmount.get() - cost);
+        }
+    }
+
     public void addToInventory(InventoryItem item){
         InventoryItem existItem = inventory.get(item.name);
         if (existItem != null){
@@ -49,22 +69,24 @@ public class Player  extends Character {
             inventory.remove(item.name);
             existItem.addItem(item.amount);
             inventory.put(item.name, existItem);
-
         }
         else{
             System.out.println("null. Create");
             inventory.put(item.name, item);
         }
+    }
 
+    public void Bind(){
+        Flonarnia.skillPanel.bindCells(inventory);
     }
 
     @Override
-    public void moveX(int value, boolean run){
+    public void moveX(double value, boolean run){
         changeSize(WIDTH, HEIGHT);
         super.moveX(value, run);
     }
     @Override
-    public void moveY(int value, boolean run){
+    public void moveY(double value, boolean run){
         changeSize(WIDTH, HEIGHT);
         super.moveY(value, run);
 
@@ -92,6 +114,9 @@ public class Player  extends Character {
                     Flonarnia.foregroundRoot.getChildren().remove(target);
                     Flonarnia.flobjects.remove(target);
                     target = null;
+                    shekelAmount.set(shekelAmount.getValue() + 1000);
+                    if (level.get() < 80)
+                        level.set(level.get() + 2);
                 }
             }
 
@@ -110,6 +135,14 @@ public class Player  extends Character {
         animation.setWidthHeight(width,height);
     }
     public void attacked(double value, boolean X){
+        healthCapacity.set(healthCapacity.get() - 50);
+        //healthMaxCapacity.set(healthMaxCapacity.get() - 50);
+
+        manaCapacity.set(manaCapacity.get() - 50);
+        //manaMaxCapacity.set(manaMaxCapacity.get() - 50);
+
+        enduranceCapacity.set(enduranceCapacity.get() - 50);
+        //enduranceMaxCapacity.set(enduranceMaxCapacity.get() - 50);
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(1000), this);
         double sign = value / Math.abs(value);
         double throwLen = 20;
@@ -120,7 +153,7 @@ public class Player  extends Character {
             translateTransition.setCycleCount(1);
             translateTransition.play();
 
-            if (Collision.checkTranslteX(this, Flonarnia.flobjects, 0) != null) {
+            if (Collision.checkTranslateX(this, Flonarnia.flobjects, 0) != null) {
                 translateTransition.stop();
                 return;
             }
@@ -134,7 +167,7 @@ public class Player  extends Character {
             translateTransition.setCycleCount(1);
             translateTransition.play();
 
-            if (Collision.checkTranslteY(this, Flonarnia.flobjects, 0) != null) {
+            if (Collision.checkTranslateY(this, Flonarnia.flobjects, 0) != null) {
                 translateTransition.stop();
                 return;
             }
@@ -155,5 +188,9 @@ public class Player  extends Character {
     }
     public void changeTarget(Flobject target){
         this.target = target;
+        if (!isRunning) {
+            double deltaX = this.getTranslateX() - target.getTranslateX();
+            this.moveX(-0.0001 * (deltaX / Math.abs(deltaX)), false);
+        }
     }
 }

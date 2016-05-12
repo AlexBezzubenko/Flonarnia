@@ -28,9 +28,9 @@ public class Loader {
     public Parent createContent(){
         Pane root = new Pane();
         root.setPrefSize(APP_W, APP_H);
-        Image backgroundImg = new Image(getClass().getResourceAsStream("res/background2.png"));
+        Image backgroundImg = new Image(getClass().getResourceAsStream("/Flonarnia/tools/res/loader_back.png"));
         ImageView background = new ImageView(backgroundImg);
-        Image backgroundRectImage = new Image(getClass().getResourceAsStream("res/rectback.png"));
+        Image backgroundRectImage = new Image(getClass().getResourceAsStream("/Flonarnia/tools/res/rect_back.png"));
         ImageView backgroundRect = new ImageView(backgroundRectImage);
         background.setFitWidth(APP_W);
         background.setFitHeight(APP_H);
@@ -82,6 +82,7 @@ public class Loader {
 
     public void runLoaderTask(Stage stage){
         class ResourceLoadingTask extends Task<Void>{
+            Flonarnia game;
             @Override
             protected Void call() throws Exception {
 
@@ -89,12 +90,12 @@ public class Loader {
                     Thread.sleep((int) (Math.random() * 100));
                     updateProgress(i + 1, 100);
                 }
+                game = new Flonarnia(stage);
                 return null;
             }
 
             @Override
             protected void succeeded() {
-                 Flonarnia game = new Flonarnia(stage);
                  game.run();
             }
         }

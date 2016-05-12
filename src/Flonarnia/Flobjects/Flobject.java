@@ -68,8 +68,9 @@ public abstract class Flobject extends Pane {
 
     protected void setTarget(){
         this.setOnMouseClicked(event -> {
+            System.out.println("Changed target: " + this.getClass().getSimpleName());
             Flonarnia.player.changeTarget(this);
-            Flonarnia.targetPanel.changeTarget(this.getClass().getSimpleName());
+            Flonarnia.targetPanel.changeTarget(species, this.getClass().getSimpleName());
         });
     }
 }

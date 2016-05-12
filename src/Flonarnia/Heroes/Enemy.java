@@ -1,6 +1,7 @@
 package Flonarnia.Heroes;
 
 import Flonarnia.Flobjects.Flobject;
+import Flonarnia.Heroes.Strategy.Strategy;
 import Flonarnia.Scenes.Flonarnia;
 import Flonarnia.tools.Collision;
 import Flonarnia.tools.SpriteAnimation;
@@ -20,14 +21,11 @@ public class Enemy extends Flobject {
     protected double width;
     protected double height;
 
-    protected boolean right = true;
-    protected boolean top = false;
-    protected boolean left = false;
-    protected boolean bottom = false;
     protected boolean isRunning = false;
     private static int moveCircleRadius = 100;
 
     protected SpriteAnimation animation;
+    protected Strategy context;
 
     public Enemy(double translateX, double translateY, String species) {
         super(translateX, translateY, "Enemy", species);
@@ -40,14 +38,24 @@ public class Enemy extends Flobject {
         bounds.setHeight(HEIGHT / 2);
         bounds.setTranslateY(translateY + HEIGHT / 2);
         bounds.setTranslateX(translateX + WIDTH /4);
+
         //this.getChildren().removeAll(this.visual);
     }
 
-    protected void moveX(int value, boolean run){
+    public void setContext(Strategy context){
+        this.context = context;
+    }
+
+    public Strategy getContext(){
+        return this.context;
+    }
+
+
+    public void moveX(double value){
         this.setTranslateX(this.getTranslateX() + value);
         //rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
 
-        Flobject collisionFlobject = Collision.checkTranslteX(this, Flonarnia.flobjects, value);
+        Flobject collisionFlobject = Collision.checkTranslateX(this, Flonarnia.flobjects, value);
         if (collisionFlobject != null){
             if (collisionFlobject.getClass() == Player.class){
                 ((Player)collisionFlobject).attacked(value / Math.abs(value) * 200, true);
@@ -65,11 +73,11 @@ public class Enemy extends Flobject {
         animation.play();
     }
 
-    protected void moveY(int value, boolean run) {
+    public void moveY(double value) {
         animation.setWidthHeight(width,height);
         this.setTranslateY(this.getTranslateY() + value);
         //rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
-        Flobject collisionFlobject = Collision.checkTranslteY(this, Flonarnia.flobjects, value);
+        Flobject collisionFlobject = Collision.checkTranslateY(this, Flonarnia.flobjects, value);
         if (collisionFlobject != null){
             if (collisionFlobject.getClass() == Player.class){
                 ((Player)collisionFlobject).attacked(value / Math.abs(value) * 200, false);
@@ -123,11 +131,11 @@ public class Enemy extends Flobject {
         animation.play();
         */
         if (moveCircleRadius >= 0 && moveCircleRadius < 800){
-            moveY(velocity, false);
+            moveY(velocity);
             animation.play();
         }
         else if (moveCircleRadius < 0 && moveCircleRadius > -800){
-            moveY(-velocity, false);
+            moveY(-velocity);
             animation.play();
         }
         moveCircleRadius -= velocity;

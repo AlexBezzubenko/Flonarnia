@@ -1,5 +1,7 @@
 package Flonarnia.Panels;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableMap;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
@@ -20,6 +22,7 @@ public class SkillPanel extends Panel {
 
         Cell cell0 = new Cell((0 % columnCount) * 50 + 5, 0);
         cell0.addItem(new InventoryItem("attack", "item"));
+        cell0.setBindAmount(false);
         Cell cell1 = new Cell((1 % columnCount) * 50 + 5, 0);
         cell1.addItem(new InventoryItem("scroll", "item"));
         Cell cell2 = new Cell((2 % columnCount) * 50 + 5, 0);
@@ -43,5 +46,11 @@ public class SkillPanel extends Panel {
         this.getChildren().addAll(skillPane);
     }
 
+    public void bindCells(ObservableMap<String, InventoryItem> items){
+        cells.get(1).setLabelBinding(items.get("scroll").amountS.asString());
+        cells.get(2).setLabelBinding(items.get("health").amountS.asString());
+        cells.get(3).setLabelBinding(items.get("endurance").amountS.asString());
+        cells.get(4).setLabelBinding(items.get("mana").amountS.asString());
+    }
 
 }
