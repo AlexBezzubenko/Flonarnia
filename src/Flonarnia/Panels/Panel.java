@@ -24,6 +24,13 @@ public class Panel extends Pane {
         this.root = pane;
         root.getChildren().add(this);
     }
+    public Panel(Pane pane){
+        this.setOnMousePressed(OnMousePressedEventHandler);
+        this.setOnMouseDragged(OnMouseDraggedEventHandler);
+
+        this.root = pane;
+        root.getChildren().add(this);
+    }
     EventHandler<MouseEvent> OnMousePressedEventHandler =
             new EventHandler<MouseEvent>() {
                 @Override

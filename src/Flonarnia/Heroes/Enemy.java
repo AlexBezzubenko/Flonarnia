@@ -5,6 +5,7 @@ import Flonarnia.Heroes.Strategy.Strategy;
 import Flonarnia.Scenes.Flonarnia;
 import Flonarnia.tools.Collision;
 import Flonarnia.tools.SpriteAnimation;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.util.Duration;
 
 /**
@@ -17,15 +18,9 @@ import javafx.util.Duration;
 //        name = "undead";
 //        name = "dragon";
 
-public class Enemy extends Flobject {
-    protected double width;
-    protected double height;
-
-    protected boolean isRunning = false;
-    private static int moveCircleRadius = 100;
-
-    protected SpriteAnimation animation;
-    protected Strategy context;
+public class Enemy extends MovableFlobject {
+    public SimpleDoubleProperty health = new SimpleDoubleProperty(1000);
+    public SimpleDoubleProperty maxHealth = new SimpleDoubleProperty(1000);
 
     public Enemy(double translateX, double translateY, String species) {
         super(translateX, translateY, "Enemy", species);
@@ -41,15 +36,6 @@ public class Enemy extends Flobject {
 
         //this.getChildren().removeAll(this.visual);
     }
-
-    public void setContext(Strategy context){
-        this.context = context;
-    }
-
-    public Strategy getContext(){
-        return this.context;
-    }
-
 
     public void moveX(double value){
         this.setTranslateX(this.getTranslateX() + value);
@@ -96,40 +82,6 @@ public class Enemy extends Flobject {
         animation.play();
     }
     public void moveCircle(int velocity){
-        /*if(getTranslateX() > 300 - width) {
-            right = false;
-            bottom = true;
-        }
-        if(getTranslateX() < 0) {
-            left = false;
-            top = true;
-        }
-        if(getTranslateY() > 300 - height) {
-            bottom = false;
-            left = true;
-        }
-        if(getTranslateY() < 0) {
-            top = false;
-            right = true;
-        }
-
-        if (right){
-            moveX(velocity, false);
-
-        }
-        if(left){
-            moveX(-velocity, false);
-
-        }
-        if (top){
-            moveY(-velocity, false);
-
-        }
-        if(bottom){
-            moveY(velocity, false);
-        }
-        animation.play();
-        */
         if (moveCircleRadius >= 0 && moveCircleRadius < 800){
             moveY(velocity);
             animation.play();

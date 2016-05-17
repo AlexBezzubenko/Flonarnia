@@ -66,11 +66,15 @@ public abstract class Flobject extends Pane {
         return bounds;
     }
 
+    public double get_width(){ return WIDTH;}
+    public double get_height(){ return HEIGHT;}
+
     protected void setTarget(){
         this.setOnMouseClicked(event -> {
             System.out.println("Changed target: " + this.getClass().getSimpleName());
             Flonarnia.player.changeTarget(this);
-            Flonarnia.targetPanel.changeTarget(species, this.getClass().getSimpleName());
+            //Flonarnia.targetPanel.changeTarget(species, this.getClass().getSimpleName());
+            Flonarnia.targetPanel.changeTarget(this, species, this.getClass().getSimpleName());
         });
     }
 }

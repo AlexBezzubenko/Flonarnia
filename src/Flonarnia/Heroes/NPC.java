@@ -17,38 +17,47 @@ import java.lang.*;
 public class NPC  extends Character {
     public NPC(double translateX, double translateY, String name){
         super(translateX, translateY, name);
-        this.setOnMouseClicked(event -> {
-             setTarget();
-             System.out.println("NPC Clicked");
-        });
     }
 
     public void moveX(int value){
-        super.moveX(value,false);
+        super.moveX(value);
     }
     public void moveY(int value){
-        super.moveY(value, false);
+        super.moveY(value);
     }
 
     @Override
     protected void setTarget(){
         this.setOnMouseClicked(event -> {
-            System.out.println("Changed target: " + this.getClass().getSimpleName());
+            Flonarnia.logPanel.addLine("Changed target: " + this.getClass().getSimpleName());
             Flonarnia.player.changeTarget(this);
-            Flonarnia.targetPanel.changeTarget(species, this.getClass().getSimpleName());
-            switch (species){
-                case "trader":
-                    if (Flonarnia.player != null) {
+            Flonarnia.targetPanel.changeTarget(this, species, this.getClass().getSimpleName());
+
+            double deltaX = this.getTranslateX() - Flonarnia.player.getTranslateX();
+            double deltaY = this.getTranslateY() - Flonarnia.player.getTranslateY();
+
+            double activateRadius = 200;
+            if (Math.abs(deltaX) < activateRadius || Math.abs(deltaY) < activateRadius) {
+                if (this.getContext() != null)
+                    this.getContext().pause(true);
+                if (Math.abs(deltaX) > Math.abs(deltaY))
+                    this.moveX(-0.001 * deltaX / Math.abs(deltaX));
+                else
+                    this.moveY(-0.001 * deltaY / Math.abs(deltaY));
+                this.stop();
+                switch (species) {
+                    case "Trader":
                         Flonarnia.tradePanel.createPoisonTrade();
                         Flonarnia.tradePanel.setVisible(true);
-                    }
-                    break;
-                case "warrior":
-                    if (Flonarnia.player != null) {
+                        break;
+                    case "Warrior":
                         Flonarnia.tradePanel.createWeaponTrade();
                         Flonarnia.tradePanel.setVisible(true);
-                    }
-                    break;
+                        break;
+                    case "GateKeeper":
+                        Flonarnia.teleportPanel.setVisible(true);
+                        break;
+                }
             }
         });
     }

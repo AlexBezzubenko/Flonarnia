@@ -9,34 +9,21 @@ import javafx.util.Duration;
 /**
  * Created by Alexander on 15.04.2016.
  */
-public class Character extends Flobject {
-    protected double width;
-    protected double height;
 
-    protected boolean right = true;
-    protected boolean top = false;
-    protected boolean left = false;
-    protected boolean bottom = false;
-    protected boolean isRunning = false;
-    private static int moveCircleRadius = 100;
-
-    protected SpriteAnimation animation;
+public class Character extends MovableFlobject {
+    protected boolean run = false;
 
     public Character(double translateX, double translateY, String name) {
         super(translateX, translateY, "NPC", name);
-        width = WIDTH;
-        height = HEIGHT;
-
-        animation = new SpriteAnimation(this.imageView, Duration.millis(1000),columns,offsetX,offsetY,WIDTH,HEIGHT);
-        animation.setCycleCount(1);
-        bounds.setWidth(WIDTH / 2);
-        bounds.setHeight(HEIGHT / 2);
-        bounds.setTranslateY(translateY + HEIGHT / 2);
-        bounds.setTranslateX(translateX + WIDTH /4);
-        //this.getChildren().removeAll(this.visual);
     }
 
-    protected void moveX(double value, boolean run){
+    public void setRun(boolean run){
+        this.run = run;
+    }
+    public boolean getRun(){
+        return run;
+    }
+    public void moveX(double value){
         this.setTranslateX(this.getTranslateX() + value);
         //rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
 
@@ -66,7 +53,7 @@ public class Character extends Flobject {
         animation.onFinishedProperty().set(actionEvent -> isRunning = true);
     }
 
-    protected void moveY(double value, boolean run) {
+    public void moveY(double value) {
         animation.setWidthHeight(width,height);
         this.setTranslateY(this.getTranslateY() + value);
         //rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
@@ -84,9 +71,9 @@ public class Character extends Flobject {
             c -= 2;
         }
         if (value > 0) {
-            animation.setOffsetY(0);
+            animation.setOffsetY(offsetY + 0);
         } else {
-            animation.setOffsetY(63);
+            animation.setOffsetY(offsetY + 63);
         }
 
         animation.setOffsetX(x);
@@ -130,11 +117,11 @@ public class Character extends Flobject {
         animation.play();
         */
         if (moveCircleRadius >= 0 && moveCircleRadius < 800){
-            moveX(velocity, false);
+            moveX(velocity);
             animation.play();
         }
         else if (moveCircleRadius < 0 && moveCircleRadius > -800){
-            moveX(-velocity, false);
+            moveX(-velocity);
             animation.play();
         }
         else if (moveCircleRadius < -800 || moveCircleRadius > 800){

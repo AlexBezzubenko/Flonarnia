@@ -139,7 +139,6 @@ public class HeroPanel extends Panel {
         //pane.setStyle("-fx-background-color: black; -fx-opacity: 0.9; -fx-background-radius: 10;");
         pane.setStyle("-fx-background-color: black; -fx-opacity: 0.9; -fx-background-radius: 10 10 0 0;");
 
-        //this.setVisible(false);
         this.getChildren().addAll(pane);
     }
 }

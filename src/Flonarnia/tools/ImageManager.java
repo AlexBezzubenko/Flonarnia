@@ -2,6 +2,7 @@ package Flonarnia.tools; /**
  * Created by Alexander on 10.03.2016.
  */
 import javafx.scene.image.Image;
+import javafx.util.Duration;
 
 import java.util.Hashtable;
 
@@ -28,6 +29,8 @@ public class ImageManager {
     protected ImageManager(){
         images.put("PLAYER",new Image(getClass().getResourceAsStream("res/PLAYER.png")));
         images.put("TREE", new Image(getClass().getResourceAsStream("res/tree.png")));
+        images.put("PORTAL", new Image(getClass().getResourceAsStream("res/portal.png")));
+        images.put("FIRE", new Image(getClass().getResourceAsStream("res/fire.png")));
         images.put("HOUSE", new Image(getClass().getResourceAsStream("res/house_type1.gif")));
         images.put("TYPEDHOUSE", new Image(getClass().getResourceAsStream("res/house.png")));
         images.put("NPC", new Image(getClass().getResourceAsStream("res/NPC.png")));
@@ -65,19 +68,25 @@ public class ImageManager {
         HousesImageParams.put("house_type_4", new double[]{857,12,100 * houseScale, 220 * houseScale, 1});
 
         FlobjectsImageParams.put("tree", new double[]{0, 0, 150, 200, 1});
+        FlobjectsImageParams.put("portal", new double[]{-3, 3, 128, 65, 5});
         FlobjectsImageParams.put("house", new double[]{0, 0, 225, 300, 1});
+        FlobjectsImageParams.put("fire", new double[]{-2, 0, 64, 68, 8});
 
         IconParams.put("mana", new double[]{180, 0, 60, 60});
         IconParams.put("scroll", new double[]{0, 0, 60, 60});
         IconParams.put("attack", new double[]{60, 0, 60, 60});
         IconParams.put("health", new double[]{120, 120, 60, 60});
         IconParams.put("endurance", new double[]{120, 60, 60, 60});
-        IconParams.put("sword", new double[]{120, 0, 60, 60});
 
-        IconParams.put("Infinity Sharper", new double[]{0, 60, 60, 60});
-        IconParams.put("Periel Sword", new double[]{0, 0, 60, 60});
-        IconParams.put("Infinity Cutter", new double[]{120, 60, 60, 60});
-        IconParams.put("Feather Eye Blade", new double[]{180, 0, 60, 60});
+
+        IconParams.put("Infinity Sharper",  new double[]{0,   0, 60, 60});
+        IconParams.put("Forgotten Sword",      new double[]{60,   0, 60, 60});
+        IconParams.put("Infinity Cutter",   new double[]{120, 0, 60, 60});
+        IconParams.put("Saint Spear", new double[]{180, 0, 60, 60});
+        IconParams.put("Sword of Life", new double[]{0, 60, 60, 60});
+        IconParams.put("Elemental Sword", new double[]{60, 60, 60, 60});
+        IconParams.put("Dragon Slayer", new double[]{120, 60, 60, 60});
+        IconParams.put("Sword of Miracles", new double[]{180, 60, 60, 60});
 
         params.put("NPC", NPCImageParams);
         params.put("Enemy", EnemyImageParams);

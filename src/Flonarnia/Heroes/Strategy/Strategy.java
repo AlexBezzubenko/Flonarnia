@@ -1,16 +1,21 @@
 package Flonarnia.Heroes.Strategy;
 
-import Flonarnia.Heroes.Enemy;
+import Flonarnia.Heroes.MovableFlobject;
 
 /**
  * Created by Alexander on 10.05.2016.
  */
 public abstract class Strategy {
-    protected Enemy caller;
+    protected MovableFlobject caller;
     protected int activateRadius = 200;
+    protected boolean stopped = false;
 
-    public Strategy(Enemy caller){
+    public Strategy(MovableFlobject caller){
         this.caller = caller;
     }
-    public void move(){};
+    public void move(){}
+
+    public void pause(boolean pause){
+        stopped = pause;
+    }
 }

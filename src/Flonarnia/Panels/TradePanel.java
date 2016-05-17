@@ -31,6 +31,13 @@ public class TradePanel extends Panel {
 
     public TradePanel(double translateX, double translateY, Pane pane){
         super(translateX, translateY, pane);
+        pane.widthProperty().addListener((obs,old,newValue)->{
+            this.setTranslateX(newValue.doubleValue() / 2 - this.getWidth() / 2);
+        });
+        pane.heightProperty().addListener((obs,old,newValue)->{
+            this.setTranslateY(newValue.doubleValue() / 2 - this.getHeight() / 2);
+        });
+
         label.setText("Store");
         label.setStyle("-fx-text-fill: goldenrod; -fx-font-style: italic; -fx-font-weight: bold;");
 
@@ -56,14 +63,14 @@ public class TradePanel extends Panel {
             if (enterAmount.getText().isEmpty()){
                 int amount = 1;
                 InventoryItem item = selectedCell.getItem();
-                item.amount = amount;
+                item.Amount.set(amount);
                 Flonarnia.player.buyItem(item, item.cost * amount);
                 return;
             }
             try{
                 int amount = Integer.parseInt(enterAmount.getText().trim());
                 InventoryItem item = selectedCell.getItem();
-                item.amount = amount;
+                item.Amount.set(amount);
                 Flonarnia.player.buyItem(item, item.cost * amount);
             }
             catch (Exception e){
@@ -144,10 +151,14 @@ public class TradePanel extends Panel {
     public void createWeaponTrade(){
         cells.forEach(Cell::removeItem);
         ArrayList<InventoryItem> items = new ArrayList<>();
-        items.add(new InventoryItem("Infinity Sharper", "weapon", 1000));
-        items.add(new InventoryItem("Periel Sword", "weapon", 2000));
+        items.add(new InventoryItem("Infinity Sharper", "weapon", 5000));
+        items.add(new InventoryItem("Forgotten Sword", "weapon", 2000));
         items.add(new InventoryItem("Infinity Cutter", "weapon", 3000));
-        items.add(new InventoryItem("Feather Eye Blade", "weapon", 4000));
+        items.add(new InventoryItem("Saint Spear", "weapon", 6000));
+        items.add(new InventoryItem("Sword of Life", "weapon", 1000));
+        items.add(new InventoryItem("Elemental Sword", "weapon", 2500));
+        items.add(new InventoryItem("Dragon Slayer", "weapon", 3000));
+
         putOnSale(items);
     }
 

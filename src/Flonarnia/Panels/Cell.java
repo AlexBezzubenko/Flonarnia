@@ -61,7 +61,6 @@ public class Cell extends StackPane{
         this.label.textProperty().bind(observable);
     }
 
-
     public void setSelected(boolean isSelected){
         if (isSelected)
             this.rect.setStroke(Color.YELLOW);
@@ -76,31 +75,34 @@ public class Cell extends StackPane{
 
     public void addItem(InventoryItem item){
         this.inventoryItem = item;
-        if (bindAmount) {
-            //label.setText(Integer.toString(item.amount));
-            label.setText(String.valueOf(inventoryItem.amount));
-            //System.out.println("binded "+ inventoryItem.name + "   " +  itemAmount + "  " + inventoryItem.amount);
+        if (bindAmount && item.kind != "weapon") {
+            label.textProperty().bind(item.Amount.asString());
         }
+        else{
+            label.textProperty().unbind();
+
+        }
+
         imageView.setImage(ImageManager.getInstance().getIcon(item.kind));
         double[] params = ImageManager.getInstance().getParams("Icons", item.name);
         if (params != null)
             imageView.setViewport(new Rectangle2D(params[0], params[1], params[2], params[3]));
         imageView.setFitWidth(48);
         imageView.setFitHeight(48);
-        Tooltip t = new Tooltip(inventoryItem.name);
+
+        Tooltip t = new Tooltip();
+        if (inventoryItem.kind == "weapon"){
+            t.setText(inventoryItem.name + "\npower = " + inventoryItem.cost / 10);
+        }
+        else{
+            t.setText(inventoryItem.name);
+        }
+
 
         Tooltip.install(this, t);
 
     }
     public void removeItem(){
-        //label.textProperty().unbind();
         imageView.setImage(null);
-    }
-
-    public void incItemAmount(int value){
-        //int currentValue = itemAmount.getValue();
-        //if (currentValue + value < 1000){
-       //     itemAmount.setValue(currentValue + value);
-       // }
     }
 }
