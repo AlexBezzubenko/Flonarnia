@@ -18,10 +18,10 @@ public class StrategyComeBack extends Strategy{
         double x = caller.getBounds().getTranslateX();
         double y = caller.getBounds().getTranslateY();
 
-        double startX = caller.getStartTranslteX();
-        double startY = caller.getStartTranslteY();
+        double startX = caller.getStartTranslateX();
+        double startY = caller.getStartTranslateY();
 
-        if (Math.abs(px - x) < activateRadius && Math.abs(py - y) < activateRadius)
+        if (Math.abs(px - x) < activateRadius && Math.abs(py - y) < activateRadius && Flonarnia.player.isAlive())
             if (caller.getClass() == Enemy.class)
                 caller.setContext(new StrategyAttack(caller));
 

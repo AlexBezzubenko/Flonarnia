@@ -24,8 +24,10 @@ public class Loader {
     private static final int APP_H = 600;
 
     private Line loadingBar = new Line();
+    private String login;
 
-    public Parent createContent(){
+    public Parent createContent(String login){
+        this.login = login;
         Pane root = new Pane();
         root.setPrefSize(APP_W, APP_H);
         Image backgroundImg = new Image(getClass().getResourceAsStream("/Flonarnia/tools/res/loader_back.png"));
@@ -90,7 +92,7 @@ public class Loader {
                     Thread.sleep((int) (Math.random() * 100));
                     updateProgress(i + 1, 100);
                 }
-                game = new Flonarnia(stage);
+                game = new Flonarnia(stage, login);
                 return null;
             }
 

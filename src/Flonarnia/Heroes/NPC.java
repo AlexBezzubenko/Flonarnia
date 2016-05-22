@@ -1,6 +1,5 @@
 package Flonarnia.Heroes;
 
-import Flonarnia.Panels.TradePanel;
 import Flonarnia.Scenes.Flonarnia;
 import java.lang.*;
 
@@ -14,6 +13,7 @@ import java.lang.*;
 //        name = "trader";
 //        name = "blacksmith";
 //        name = "gatekeeper";
+
 public class NPC  extends Character {
     public NPC(double translateX, double translateY, String name){
         super(translateX, translateY, name);
@@ -56,6 +56,12 @@ public class NPC  extends Character {
                         break;
                     case "GateKeeper":
                         Flonarnia.teleportPanel.setVisible(true);
+                        break;
+                    case "Shaman":
+                        Flonarnia.shamanPanel.setVisible(true);
+                        break;
+                    case "Blacksmith":
+                        Flonarnia.questPanel.setVisible(true);
                         break;
                 }
             }

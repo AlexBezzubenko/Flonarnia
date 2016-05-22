@@ -13,7 +13,6 @@ public abstract class MovableFlobject extends Flobject {
     protected double height;
 
     protected boolean isRunning = false;
-    protected int moveCircleRadius = 100;
     protected double startX;
     protected double startY;
 
@@ -38,10 +37,10 @@ public abstract class MovableFlobject extends Flobject {
     public void moveX(double value){}
     public void moveY(double value){}
 
-    public double getStartTranslteX(){
+    public double getStartTranslateX(){
         return startX;
     }
-    public double getStartTranslteY(){
+    public double getStartTranslateY(){
         return startY;
     }
 

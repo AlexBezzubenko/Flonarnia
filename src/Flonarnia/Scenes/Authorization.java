@@ -10,9 +10,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.util.Hashtable;
 
 /**
  * Created by Alexander on 24.03.2016.
@@ -22,6 +25,7 @@ public class Authorization {
     static final int APP_H = 600;
     private AnimationTimer animationTimer;
     private Stage primaryStage;
+    private String login;
 
     public Authorization(Stage primaryStage){
         this.primaryStage = primaryStage;
@@ -30,12 +34,10 @@ public class Authorization {
     public Parent createContent(){
         Pane root = new Pane();
         root.setPrefSize(APP_W, APP_H);
-        /* Image backgroundImg = new Image(getClass().getResourceAsStream("res/loginBackground.jpg")); */
         Image backgroundImg = new Image(getClass().getResourceAsStream("/Flonarnia/tools/res/logbackim.png"));
         ImageView background = new ImageView(backgroundImg);
         Image backgroundRectImage = new Image(getClass().getResourceAsStream("/Flonarnia/tools/res/logbackrect.png"));
         ImageView backgroundRect = new ImageView(backgroundRectImage);
-
 
         background.setFitWidth(APP_W);
         background.setFitHeight(APP_H);
@@ -43,6 +45,8 @@ public class Authorization {
         VBox vBox = new VBox();
         vBox.setSpacing(15);
 
+        Text text = new Text();
+        text.setVisible(false);
 
         TextField loginField = new TextField();
         loginField.setPromptText("login");
@@ -55,7 +59,7 @@ public class Authorization {
 
         HBox hBox = new HBox();
         hBox.setSpacing(40);
-        vBox.getChildren().addAll(loginField, passwordField, hBox);
+        vBox.getChildren().addAll(loginField, passwordField, hBox, text);
         hBox.getChildren().addAll(loginButton,registrationButton);
 
         BorderPane borderPane = new BorderPane(vBox);
@@ -71,9 +75,8 @@ public class Authorization {
                     backgroundRect.setTranslateX(backgroundRect.getTranslateX() + 3);
                 }
                 else {
-
                     Loader loader = new Loader();
-                    Scene scene = new Scene(loader.createContent());
+                    Scene scene = new Scene(loader.createContent(login));
                     primaryStage.setScene(scene);
                     primaryStage.show();
                     loader.runLoaderTask(primaryStage);
@@ -83,7 +86,40 @@ public class Authorization {
         };
 
         loginButton.setOnMouseClicked(event -> {
-            animationTimer.start();
+            Hashtable<String, String> base = new Hashtable<>();
+            try (DataInputStream iStream =
+                         new DataInputStream(new BufferedInputStream
+                                 (new FileInputStream("src/Flonarnia/tools/Base/base.bin")))) {
+                while (true) {
+                    if (iStream.available() == 0) {
+                        iStream.close();
+                        break;
+                    }
+                    String login = iStream.readUTF();
+                    String password = iStream.readUTF();
+                    base.put(login, password);
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println("can't read file not found");
+            } catch (IOException e1) {
+                System.out.println("can't read io");
+            }
+
+            String login = loginField.getText();
+            String password = passwordField.getText();
+            for (String key: base.keySet()){
+                if(login.equals(new String(key)) && password.equals(new String(base.get(key)))){
+                    this.login = login;
+                    animationTimer.start();
+                    text.setText("OK");
+                    text.setFill(Color.GREEN);
+                    text.setVisible(true);
+                    return;
+                }
+            }
+            text.setText("Check input");
+            text.setFill(Color.RED);
+            text.setVisible(true);
         });
 
         Registration registration = new Registration();
@@ -105,8 +141,9 @@ class Registration extends Pane{
 
     private PasswordField passwordField = new PasswordField();
     private PasswordField checkPasswordField = new PasswordField();
-    private Button signUp = new Button("Sigh Up");
+    private Button signUp = new Button("Sign Up");
     private Button cancel = new Button("Cancel");
+    private Text text = new Text("Registered");
 
     public void createContent(){
         this.setTranslateX(Authorization.APP_W / 2 - 50);
@@ -114,9 +151,10 @@ class Registration extends Pane{
         loginField.setPromptText("login");
         passwordField.setPromptText("password");
         checkPasswordField.setPromptText("confirm password");
+        text.setVisible(false);
         HBox hbox = new HBox(signUp, cancel);
         hbox.setSpacing(40);
-        vBox.getChildren().addAll(loginField, passwordField, checkPasswordField, hbox);
+        vBox.getChildren().addAll(loginField, passwordField, checkPasswordField, hbox, text);
         vBox.setSpacing(15);
         this.getChildren().addAll(vBox);
 
@@ -127,22 +165,50 @@ class Registration extends Pane{
         signUp.setOnMouseClicked(event->{
             String login = loginField.getText();
             String password = passwordField.getText();
-                if (login.length() >= 5 && password.length() >= 5 && password.contentEquals(checkPasswordField.getText())) {
-                    File file = new File("src/file.txt");
-                    try {
-                        if (!file.exists()) {
-                            file.createNewFile();
+            if (login.length() >= 5 && password.length() >= 5 && password.contentEquals(checkPasswordField.getText())) {
+                Hashtable<String, String> base = new Hashtable<>();
+                try (DataInputStream iStream =
+                             new DataInputStream(new BufferedInputStream
+                                     (new FileInputStream("src/Flonarnia/tools/Base/base.bin")))) {
+                    while (true) {
+                        if (iStream.available() == 0) {
+                            iStream.close();
+                            break;
                         }
-                    } catch (IOException o) {
+                        String log = iStream.readUTF();
+                        String pass = iStream.readUTF();
+                        base.put(log, pass);
                     }
-                    try (FileWriter writer = new FileWriter("src/file.txt", true)) { //append
-                        String text = login + " " + password + "\n";
-                        writer.write(text);
-                        writer.close();
-                    } catch (IOException ex) {
-                        System.out.println(ex.getMessage());
-                    }
+                } catch (FileNotFoundException e) {
+                    System.out.println("can't read file not found");
+                } catch (IOException e1) {
+                    System.out.println("can't read io");
                 }
+
+                if (base.get(login) == null) {
+                    try (DataOutputStream oStream = new DataOutputStream(
+                            new BufferedOutputStream(new FileOutputStream("src/Flonarnia/tools/Base/base.bin", true)))) {
+                        oStream.writeUTF(login);
+                        oStream.writeUTF(password);
+                        oStream.close();
+                    } catch (FileNotFoundException e) {
+                        System.out.println("can't write file not found");
+                    } catch (IOException e1) {
+                        System.out.println("can't write io");
+                    }
+                    text.setText("Registered");
+                    text.setFill(Color.GREEN);
+                }
+                else{
+                    text.setText("User already exists");
+                    text.setFill(Color.RED);
+                }
+            }
+            else{
+                text.setText("Incorrect input");
+                text.setFill(Color.RED);
+            }
+            text.setVisible(true);
         });
     }
 }

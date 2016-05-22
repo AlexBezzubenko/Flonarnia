@@ -2,7 +2,6 @@ package Flonarnia.Panels;
 
 import Flonarnia.Flobjects.Portal;
 import Flonarnia.Scenes.Flonarnia;
-import Flonarnia.Scenes.Location.KetraOrcOutpost;
 import Flonarnia.Scenes.Location.Location;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -30,11 +29,11 @@ public class TeleportPanel extends Panel{
         hideButton.setStyle("-fx-background-color: black; -fx-opacity: 0.4;" +
                 " -fx-font-size: 14px; -fx-text-fill: yellow;");
         hideButton.setOnAction(event -> this.setVisible(false));
-        hideButton.setTranslateX(220 - 30);
+        hideButton.setTranslateX(250 - 30);
         hideButton.setPrefSize(5, 5);
         this.getChildren().addAll(label, hideButton);
 
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 7; i++){
             Hyperlink hyperlink = new Hyperlink();
             hyperlink.setTranslateX(20);
             hyperlink.setTranslateY(i * 20 + 20);
@@ -50,8 +49,8 @@ public class TeleportPanel extends Panel{
             this.setTranslateY(newValue.doubleValue() / 2 - this.getHeight() / 2);
         });
         this.setStyle("-fx-background-color: black; -fx-opacity: 0.9; -fx-background-radius: 10;");
-        this.setPrefSize(220, 150);
-        //this.setVisible(false);
+        this.setPrefSize(250, 180);
+        this.setVisible(false);
 
     }
 
@@ -59,18 +58,28 @@ public class TeleportPanel extends Panel{
         for(int i = 0; i < locations.size(); i++){
             Location l = locations.get(i);
             Hyperlink h = links.get(i);
-            h.setText(l.getName() + " - " + l.getCost() + " Shekels");
-            h.setOnAction(e->{
-                root.getChildren().clear();
-                Flonarnia.flobjects.clear();
+            h.setText(l.getName() + "(" + l.getLevel() + ") - " + l.getCost() + " Shekels");
+            h.setOnAction(e-> {
+                if (Flonarnia.player.shekelAmount.get() < l.getCost()) {
+                    Flonarnia.logPanel.addLine("You do not have enough money");
+                    h.setVisited(false);
+                    return;
+                }
+                if (!l.isCreated()) {
+                    root.getChildren().clear();
+                    Flonarnia.flobjects.clear();
 
-                Flonarnia.flobjects.addAll(l.createContext());
-                Flonarnia.flobjects.add(Flonarnia.player);
-                root.getChildren().addAll(Flonarnia.flobjects);
+                    for (Location location : locations)
+                        location.setCreated(false);
+                    l.setCreated(true);
+                    Flonarnia.flobjects.addAll(l.createContext());
+                    Flonarnia.flobjects.add(Flonarnia.player);
+                    root.getChildren().addAll(Flonarnia.flobjects);
+                    Portal portal = l.getPortal();
+                    root.getChildren().add(portal);
+                }
                 Portal portal = l.getPortal();
-                root.getChildren().add(portal);
-
-                Flonarnia.player.toLocation(portal, l.getName());
+                Flonarnia.player.toLocation(portal, l.getName(), l.getCost());
                 h.setVisited(false);
             });
         }

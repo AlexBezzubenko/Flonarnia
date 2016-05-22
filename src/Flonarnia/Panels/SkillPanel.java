@@ -1,9 +1,7 @@
 package Flonarnia.Panels;
 
-import Flonarnia.Flobjects.Portal;
 import Flonarnia.Heroes.Player;
-import Flonarnia.Scenes.Flonarnia;
-import javafx.beans.property.SimpleStringProperty;
+import Flonarnia.Scenes.Location.Location;
 import javafx.collections.ObservableMap;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -17,7 +15,7 @@ import java.util.ArrayList;
 public class SkillPanel extends Panel {
     private ArrayList<Cell> cells = new ArrayList<>();
 
-    public SkillPanel(Pane pane, Player player, Portal portal) {
+    public SkillPanel(Pane pane, Player player, ArrayList<Location> locations) {
         super(pane);
 
         StackPane skillPane = new StackPane();
@@ -41,7 +39,7 @@ public class SkillPanel extends Panel {
         cells.add(cell3);
         cells.add(cell4);
 
-        cell1.setOnMouseClicked(event -> player.toVillage(portal));
+        cell1.setOnMouseClicked(event -> player.toVillage(locations, false));
         cell2.setOnMouseClicked(event -> player.usePoison("health", Color.RED));
         cell3.setOnMouseClicked(event -> player.usePoison("endurance", Color.GREEN));
         cell4.setOnMouseClicked(event -> player.usePoison("mana", Color.BLUE));

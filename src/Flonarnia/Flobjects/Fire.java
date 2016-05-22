@@ -15,9 +15,7 @@ public class Fire extends Flobject {
 
         animation = new SpriteAnimation(this.imageView, Duration.millis(500),columns,offsetX,offsetY,WIDTH,HEIGHT);
         animation.setCycleCount(Animation.INDEFINITE);
-        //animation.setAutoReverse(true);
         animation.play();
-
 
         bounds.setWidth(WIDTH / 2);
         bounds.setHeight(HEIGHT / 3);

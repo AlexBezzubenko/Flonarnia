@@ -3,28 +3,30 @@ package Flonarnia.Scenes.Location;
 import Flonarnia.Flobjects.Flobject;
 import Flonarnia.Flobjects.Portal;
 
-import javax.sound.sampled.Port;
 import java.util.ArrayList;
 
 public abstract class Location {
-    protected ArrayList<Flobject> flobjects = new ArrayList<>();
     protected Portal portal;
     protected String name;
     protected int cost;
+    protected int level = 1;
 
-    public boolean created = false;
-    public Location(){}
-    public Location(String name, int cost){
+    protected boolean created = false;
+
+    public Location(String name, int cost, int level){
         this.name = name;
         this.cost = cost;
+        this.level = level;
     }
-    public ArrayList<Flobject> createContext(){
-        return flobjects;
-    }
+    public abstract ArrayList<Flobject> createContext();
     public Portal getPortal(){
         return portal;
     }
     public String getName(){return name;}
     public int getCost(){return cost;}
-
+    public int getLevel(){return level;}
+    public void setCreated(boolean created){
+        this.created = created;
+    }
+    public boolean isCreated(){return created;}
 }

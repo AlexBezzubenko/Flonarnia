@@ -9,7 +9,6 @@ import java.util.Random;
 public class StrategyNPCBeforeHouse extends Strategy {
     private int moveCircleRadius = 100;
     private double startX;
-    private double startY;
 
     private int direction = 1;
     private int distance = 0;
@@ -20,7 +19,6 @@ public class StrategyNPCBeforeHouse extends Strategy {
     public StrategyNPCBeforeHouse(MovableFlobject caller) {
         super(caller);
         startX = caller.getTranslateX();
-        startY = caller.getTranslateY();
     }
 
     public void move() {
@@ -60,10 +58,6 @@ public class StrategyNPCBeforeHouse extends Strategy {
         double y = caller.getTranslateY();
 
         double w = caller.getBounds().getWidth();
-        double h = caller.getBounds().getHeight();
-
-        // 1 - left
-        // 2 - right
 
         if (x + velocity > startX + moveCircleRadius - w)
             return 2;

@@ -2,7 +2,6 @@ package Flonarnia.Panels;
 
 import Flonarnia.Scenes.Flonarnia;
 import javafx.beans.binding.StringBinding;
-import javafx.collections.ObservableMap;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -60,16 +59,15 @@ public class TradePanel extends Panel {
         buyButton.setPrefSize(50, 20);
 
         buyButton.setOnAction(event -> {
-            if (enterAmount.getText().isEmpty()){
+            InventoryItem item = selectedCell.getItem();
+            if (enterAmount.getText().isEmpty() || item.kind.compareTo("weapon") == 0){
                 int amount = 1;
-                InventoryItem item = selectedCell.getItem();
                 item.Amount.set(amount);
                 Flonarnia.player.buyItem(item, item.cost * amount);
                 return;
             }
             try{
                 int amount = Integer.parseInt(enterAmount.getText().trim());
-                InventoryItem item = selectedCell.getItem();
                 item.Amount.set(amount);
                 Flonarnia.player.buyItem(item, item.cost * amount);
             }
@@ -142,16 +140,16 @@ public class TradePanel extends Panel {
         cells.forEach(Cell::removeItem);
         ArrayList<InventoryItem> items = new ArrayList<>();
         items.add(new InventoryItem("mana", "poison", 50));
-        items.add(new InventoryItem("health", "poison", 100));
-        items.add(new InventoryItem("endurance", "poison"));
-        items.add(new InventoryItem("scroll", "item"));
+        items.add(new InventoryItem("health", "poison", 300));
+        items.add(new InventoryItem("endurance", "poison", 150));
+        items.add(new InventoryItem("scroll", "item", 200));
         putOnSale(items);
     }
 
     public void createWeaponTrade(){
         cells.forEach(Cell::removeItem);
         ArrayList<InventoryItem> items = new ArrayList<>();
-        items.add(new InventoryItem("Infinity Sharper", "weapon", 5000));
+        items.add(new InventoryItem("Infinity Sharper", "weapon", 50000));
         items.add(new InventoryItem("Forgotten Sword", "weapon", 2000));
         items.add(new InventoryItem("Infinity Cutter", "weapon", 3000));
         items.add(new InventoryItem("Saint Spear", "weapon", 6000));

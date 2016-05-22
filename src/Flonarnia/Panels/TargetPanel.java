@@ -3,16 +3,13 @@ package Flonarnia.Panels;
 import Flonarnia.Flobjects.Flobject;
 import Flonarnia.Heroes.Enemy;
 import javafx.beans.binding.DoubleBinding;
-import javafx.beans.binding.StringBinding;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import org.w3c.dom.css.Rect;
 
 /**
  * Created by Alexander on 23.04.2016.

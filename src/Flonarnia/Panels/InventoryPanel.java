@@ -2,18 +2,13 @@ package Flonarnia.Panels;
 
 import Flonarnia.Scenes.Flonarnia;
 import javafx.beans.binding.StringBinding;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableMap;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**

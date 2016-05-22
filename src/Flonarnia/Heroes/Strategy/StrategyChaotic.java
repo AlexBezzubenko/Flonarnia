@@ -4,7 +4,6 @@ import Flonarnia.Heroes.Enemy;
 import Flonarnia.Heroes.MovableFlobject;
 import Flonarnia.Heroes.NPC;
 import Flonarnia.Scenes.Flonarnia;
-import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -18,31 +17,23 @@ public class StrategyChaotic extends Strategy {
     private double startX;
     private double startY;
 
-    private int i = 100;
-
     private int direction = 1;
     private int distance = 0;
 
     private int velocity = 1;
     private final Random random = new Random();
 
-    private static double time = 0;
-    private final double second = 1000_000_000;
-
-
     public StrategyChaotic(MovableFlobject caller) {
         super(caller);
         startX = caller.getTranslateX();
         startY = caller.getTranslateY();
-
 
         Rectangle rect = new Rectangle(moveCircleRadius * 2, moveCircleRadius * 2, Color.TRANSPARENT);
         rect.setTranslateX(startX - moveCircleRadius);
         rect.setTranslateY(startY - moveCircleRadius);
         rect.setStrokeWidth(3);
         rect.setStroke(Color.BLACK);
-        Flonarnia.gameRoot.getChildren().addAll(rect);
-
+        //Flonarnia.gameRoot.getChildren().addAll(rect);
     }
 
     public void move() {
@@ -56,7 +47,7 @@ public class StrategyChaotic extends Strategy {
         double y = caller.getTranslateY();
 
         if (Math.abs(px - x) < activateRadius && Math.abs(py - y) < activateRadius)
-            if (caller.getClass() == Enemy.class)
+            if (caller.getClass() == Enemy.class && Flonarnia.player.isAlive())
              caller.setContext(new StrategyAttack(caller));
         if (!stopped) {
             switch (outOfBorder()) {

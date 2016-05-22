@@ -17,10 +17,8 @@ public class StrategyAttack extends Strategy{
         double x = caller.getBounds().getTranslateX();
         double y = caller.getBounds().getTranslateY();
 
-        if (Math.abs(px - x) > activateRadius * 1.5 || Math.abs(py - y) > activateRadius * 1.5)
-            //caller.setContext(new StrategyChaotic(caller));
+        if (Math.abs(px - x) > activateRadius * 1.5 || Math.abs(py - y) > activateRadius * 1.5 || !Flonarnia.player.isAlive())
             caller.setContext(new StrategyComeBack(caller));
-
 
         double deltaX = x - px;
         double deltaY = y - py;

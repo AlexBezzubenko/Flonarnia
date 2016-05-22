@@ -1,8 +1,6 @@
 package Flonarnia.Panels;
 
 import Flonarnia.tools.ImageManager;
-import javafx.beans.Observable;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
@@ -10,7 +8,6 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
@@ -19,7 +16,6 @@ import java.util.ArrayList;
  * Created by Alexander on 30.04.2016.
  */
 public class Cell extends StackPane{
-    private boolean empty = true;
     private Rectangle rect;
     private ImageView imageView = new ImageView();
     private Label label = new Label();
@@ -80,7 +76,7 @@ public class Cell extends StackPane{
         }
         else{
             label.textProperty().unbind();
-
+            label.setText("");
         }
 
         imageView.setImage(ImageManager.getInstance().getIcon(item.kind));
@@ -97,8 +93,6 @@ public class Cell extends StackPane{
         else{
             t.setText(inventoryItem.name);
         }
-
-
         Tooltip.install(this, t);
 
     }

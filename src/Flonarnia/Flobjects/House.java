@@ -23,13 +23,13 @@ public class House extends Flobject {
         super(translateX, translateY, "Flobjects", "house");
         switch (type){
             case 1:
-                imageView.setViewport(new Rectangle2D(0,0,150,160));
+                imageView.setViewport(new Rectangle2D(0, 0, 150, 160));
             case 2:
-                imageView.setViewport(new Rectangle2D(160,0,144,160));
+                imageView.setViewport(new Rectangle2D(160, 0, 144, 160));
         }
         bounds.setWidth(width);
         bounds.setHeight(height);
-        bounds.setTranslateY(translateY+100);
+        bounds.setTranslateY(translateY + 100);
         bounds.setTranslateX(translateX);
     }
 }

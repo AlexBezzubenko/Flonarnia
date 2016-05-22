@@ -2,7 +2,6 @@ package Flonarnia.tools; /**
  * Created by Alexander on 10.03.2016.
  */
 import javafx.scene.image.Image;
-import javafx.util.Duration;
 
 import java.util.Hashtable;
 
@@ -29,6 +28,9 @@ public class ImageManager {
     protected ImageManager(){
         images.put("PLAYER",new Image(getClass().getResourceAsStream("res/PLAYER.png")));
         images.put("TREE", new Image(getClass().getResourceAsStream("res/tree.png")));
+        images.put("MOUNTAINH", new Image(getClass().getResourceAsStream("res/horizontal_mountain.png")));
+        images.put("MOUNTAINV", new Image(getClass().getResourceAsStream("res/vertical_mountain.png")));
+
         images.put("PORTAL", new Image(getClass().getResourceAsStream("res/portal.png")));
         images.put("FIRE", new Image(getClass().getResourceAsStream("res/fire.png")));
         images.put("HOUSE", new Image(getClass().getResourceAsStream("res/house_type1.gif")));
@@ -68,6 +70,8 @@ public class ImageManager {
         HousesImageParams.put("house_type_4", new double[]{857,12,100 * houseScale, 220 * houseScale, 1});
 
         FlobjectsImageParams.put("tree", new double[]{0, 0, 150, 200, 1});
+        FlobjectsImageParams.put("mountainH", new double[]{0, 0, 1020, 242, 1});
+        FlobjectsImageParams.put("mountainV", new double[]{0, 0, 268, 809, 1});
         FlobjectsImageParams.put("portal", new double[]{-3, 3, 128, 65, 5});
         FlobjectsImageParams.put("house", new double[]{0, 0, 225, 300, 1});
         FlobjectsImageParams.put("fire", new double[]{-2, 0, 64, 68, 8});
@@ -100,12 +104,6 @@ public class ImageManager {
     }
     public Image getIcon(String key){
         return icons.get(key);
-    }
-    public double[] getNPCImageParams(String key){
-        return NPCImageParams.get(key);
-    }
-    public double[] getEnemyImageParams(String key){
-        return EnemyImageParams.get(key);
     }
 
     public double[] getParams(String paramName, String objectName){

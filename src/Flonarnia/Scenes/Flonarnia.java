@@ -2,21 +2,13 @@ package Flonarnia.Scenes;
 
 import Flonarnia.Flobjects.Flobject;
 import Flonarnia.Flobjects.Portal;
-import Flonarnia.Heroes.Enemy;
 import Flonarnia.Heroes.MovableFlobject;
-import Flonarnia.Heroes.NPC;
 import Flonarnia.Heroes.Player;
 import Flonarnia.Panels.*;
-import Flonarnia.Scenes.Location.Dion;
-import Flonarnia.Scenes.Location.KetraOrcOutpost;
-import Flonarnia.Scenes.Location.Location;
+import Flonarnia.Scenes.Location.*;
 import Flonarnia.tools.Sort;
-import Flonarnia.tools.SpriteAnimation;
 import com.sun.javafx.perf.PerformanceTracker;
-import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
-import javafx.animation.FadeTransition;
-import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -27,14 +19,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
-import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -60,6 +48,9 @@ public class Flonarnia {
     public static TargetPanel targetPanel;
     public static TradePanel tradePanel;
     public static TeleportPanel teleportPanel;
+    public static ToVillagePanel toVillagePanel;
+    public static ShamanPanel shamanPanel;
+    public static QuestPanel questPanel;
 
     public static LogPanel logPanel;
     public static SkillPanel skillPanel;
@@ -72,13 +63,21 @@ public class Flonarnia {
     private Portal portal;
     private Location currentLocation;
     private ArrayList<Location> locations = new ArrayList<>();
+    private String login;
 
-    public Flonarnia(Stage primaryStage){
+    public Flonarnia(Stage primaryStage, String login){
         this.primaryStage = primaryStage;
+        this.login = login;
+
+        String pattern= "^[a-zA-Z0-9]+$";
+        if(!login.matches(pattern)){
+            login = "hero";
+        }
+
         APP_W = primaryStage.getWidth();
         APP_H = primaryStage.getHeight();
-        double x = APP_W / 4 + 600 + 1000;
-        double y = APP_H / 4 + 600;
+        double x = 800;
+        double y = 600;
         player = new Player(x, y);
         gameRoot.setLayoutX( -(x - APP_W / 2));
         gameRoot.setLayoutY( -(y - APP_H / 2));
@@ -92,7 +91,6 @@ public class Flonarnia {
                     imageView.setTranslateX(imageView.getTranslateX() + APP_W);
                 }
             }
-
             while (offset < gv.get(4).getTranslateX()){
                 for (ImageView imageView: gv){
                     imageView.setTranslateX(imageView.getTranslateX() - APP_W);
@@ -118,7 +116,7 @@ public class Flonarnia {
             APP_W = newValue.doubleValue();
             double offset = player.getTranslateX();
             gameRoot.setLayoutX( -(offset - APP_W / 2));
-            frames.setTranslateX(APP_W - frames.getWidth() - 10);
+            frames.setTranslateX(APP_W - frames.getWidth() - 40);
         });
         appRoot.heightProperty().addListener((obs,old,newValue)->{
             APP_H = newValue.doubleValue();
@@ -127,7 +125,13 @@ public class Flonarnia {
         });
 
         locations.add(new Dion());
+        locations.get(0).setCreated(true);
+        locations.add(new BeastFarm());
+        locations.add(new DevilPass());
+        locations.add(new DragonValley());
+        locations.add(new ForbiddenPass());
         locations.add(new KetraOrcOutpost());
+        locations.add(new ValleyOfSilence());
     }
 
     public void run(){
@@ -140,7 +144,9 @@ public class Flonarnia {
         });
         //t.start();
         createContext();
-        logPanel.addLine("Welcome to Flonarnia!");
+
+        player.loadState(login);
+        logPanel.addLine("Welcome to Flonarnia!", Color.GREEN);
         tracker = PerformanceTracker.getSceneTracker(mainScene);
         frames.setFont(Font.font ("Verdana", 20));
         frames.setTranslateX(700);
@@ -157,12 +163,11 @@ public class Flonarnia {
                 for (Flobject f: flobjects){
                     f.toFront();
                 }
-                if (now % 500 == 0){
+                if (now % 30 == 0){
                     float fps = tracker.getAverageFPS();
                     tracker.resetAverageFPS();
                     frames.setText(String.valueOf((int)fps));
-                    System.out.println(player.getTranslateX() + " " + player.getTranslateY());
-                    //player.regenerate();
+                    player.regenerate();
                 }
             }
         };
@@ -204,24 +209,28 @@ public class Flonarnia {
 
         logPanel = new LogPanel(10, APP_H - 200, appRoot);
         HeroPanel heroPanel = new HeroPanel(10, 10, appRoot);
+        toVillagePanel = new ToVillagePanel(appRoot, locations);
         targetPanel = new TargetPanel(APP_W / 2, 0, appRoot);
         tradePanel = new TradePanel(APP_W / 3, APP_H / 4, appRoot);
         teleportPanel = new TeleportPanel(appRoot);
         teleportPanel.setLinks(locations, foregroundRoot);
+        shamanPanel = new ShamanPanel(appRoot);
+        questPanel = new QuestPanel(appRoot);
 
 
-        //Scene mainScene = new Scene(appRoot, APP_W, APP_W);
         mainScene = new Scene(appRoot, APP_W, APP_W);
         primaryStage.setScene(mainScene);
         mainScene.setOnKeyPressed(event->keys.put(event.getCode(),true));
         mainScene.setOnKeyReleased(event->keys.put(event.getCode(), false));
 
-
-
         portal = currentLocation.getPortal();
         foregroundRoot.getChildren().add(portal);
-        skillPanel = new SkillPanel(appRoot, player, portal);
+        skillPanel = new SkillPanel(appRoot, player, locations);
         player.Bind(skillPanel);
+
+        primaryStage.setOnCloseRequest(e->{
+            player.saveState(login);
+        });
     }
 
     private void enemyActivate(){
@@ -233,7 +242,6 @@ public class Flonarnia {
         });
     }
     private void update(){
-        int n = 40000;
         if (isPressed(KeyCode.UP) || isPressed(KeyCode.W)) {
             player.moveY(-velocity);
         } else if (isPressed(KeyCode.DOWN) || isPressed(KeyCode.S)) {
@@ -250,29 +258,11 @@ public class Flonarnia {
             primaryStage.close();
         }
         else if (isPressed(KeyCode.R)){
-            //skillPanel.cells.get(4).incItemAmount(1);
-            //inventoryPanel.shekelAmount.setValue(inventoryPanel.shekelAmount.getValue() + 100);
-            //player.addToInventory(new InventoryItem("mana", "poison", 3));
-            //System.out.println("try to add");
             player.shekelAmount.set(player.shekelAmount.getValue() + 2000);
-        }
-
-        else if (isPressed(KeyCode.NUMPAD8)){
-            player.setTranslateY(player.getTranslateY() - n);
-        }
-        else if (isPressed(KeyCode.NUMPAD2)){
-            player.setTranslateY(player.getTranslateY() + n);
-        }
-        else if (isPressed(KeyCode.NUMPAD4)){
-            player.setTranslateX(player.getTranslateX() - n);
-        }
-        else if (isPressed(KeyCode.NUMPAD6)){
-            player.setTranslateX(player.getTranslateX() + n);
         }
         else {
             player.stop();
         }
-
 
         if (isReleased(KeyCode.SHIFT)){
             player.setRun(!player.getRun());
@@ -285,16 +275,16 @@ public class Flonarnia {
             setKeyIsPressed(KeyCode.I);
         }
         if (isReleased(KeyCode.C)){
-            player.saveState();
+            player.saveState(login);
             setKeyIsPressed(KeyCode.C);
         }
         if (isReleased(KeyCode.V)){
-            player.loadState();
+            player.loadState(login);
             setKeyIsPressed(KeyCode.V);
         }
 
         if (isReleased(KeyCode.F2)){
-            Flonarnia.player.toVillage(portal);
+            Flonarnia.player.toVillage(locations, true);
             setKeyIsPressed(KeyCode.F2);
         }
         if (isReleased(KeyCode.F3)){
@@ -309,10 +299,6 @@ public class Flonarnia {
             Flonarnia.player.usePoison("mana", Color.BLUE);
             setKeyIsPressed(KeyCode.F5);
         }
-        if (isReleased(KeyCode.F6)){
-            Flonarnia.player.spend();
-            setKeyIsPressed(KeyCode.F6);
-        }
     }
 
     private boolean isPressed(KeyCode key) {
@@ -324,5 +310,4 @@ public class Flonarnia {
     private void setKeyIsPressed(KeyCode key){
         keys.put(key, true);
     }
-
 }

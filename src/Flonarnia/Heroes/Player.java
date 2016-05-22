@@ -6,21 +6,23 @@ import Flonarnia.Panels.InventoryItem;
 import Flonarnia.Panels.InventoryPanel;
 import Flonarnia.Panels.SkillPanel;
 import Flonarnia.Scenes.Flonarnia;
-import Flonarnia.tools.Collision;
+import Flonarnia.Scenes.Location.Location;
+import Flonarnia.tools.AttackedTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
 import javafx.scene.CacheHint;
 import javafx.scene.effect.ColorAdjust;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.util.Duration;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Created by Alexander on 22.03.2016.
@@ -30,14 +32,14 @@ public class Player  extends Character {
     public static SimpleIntegerProperty shekelAmount = new SimpleIntegerProperty(1000);
     public SimpleIntegerProperty level = new SimpleIntegerProperty(1);
 
-    public SimpleIntegerProperty healthCapacity = new SimpleIntegerProperty(800);
-    public SimpleIntegerProperty healthMaxCapacity = new SimpleIntegerProperty(1000);
+    public SimpleIntegerProperty healthCapacity = new SimpleIntegerProperty(100);
+    public SimpleIntegerProperty healthMaxCapacity = new SimpleIntegerProperty(100);
 
-    public SimpleIntegerProperty manaCapacity = new SimpleIntegerProperty(800);
-    public SimpleIntegerProperty manaMaxCapacity = new SimpleIntegerProperty(1000);
+    public SimpleIntegerProperty manaCapacity = new SimpleIntegerProperty(100);
+    public SimpleIntegerProperty manaMaxCapacity = new SimpleIntegerProperty(100);
 
-    public SimpleIntegerProperty enduranceCapacity = new SimpleIntegerProperty(800);
-    public SimpleIntegerProperty enduranceMaxCapacity = new SimpleIntegerProperty(1000);
+    public SimpleIntegerProperty enduranceCapacity = new SimpleIntegerProperty(100);
+    public SimpleIntegerProperty enduranceMaxCapacity = new SimpleIntegerProperty(100);
 
     private InventoryItem sword;
     public  InventoryPanel inventoryPanel;
@@ -45,6 +47,9 @@ public class Player  extends Character {
 
     private final int attackRadius = 100;
     private int power = 100;
+    private int exp = 0;
+    private int maxExp = 100;
+    private boolean alive = true;
 
     private Flobject target;
 
@@ -65,10 +70,6 @@ public class Player  extends Character {
 
         inventoryPanel.updateCells(inventory);
 
-        /*inventory.addListener((MapChangeListener) change -> {
-            System.out.println("Detected a change! ");
-            inventoryPanel.updateCells(inventory);
-        });*/
         poisonUsingEllipse = new Ellipse();
         {
             poisonUsingEllipse.setCenterX(15.0f);
@@ -77,7 +78,6 @@ public class Player  extends Character {
             poisonUsingEllipse.setRadiusY(5.0f);
         }
 
-        //ellipse.getTransforms().add(new Rotate(3, 3, 30, 30));
         poisonUsingEllipse.setFill(Color.TRANSPARENT);
         poisonUsingEllipse.setStroke(Color.RED);
         poisonUsingEllipse.setStrokeWidth(3);
@@ -126,19 +126,33 @@ public class Player  extends Character {
             }
         }
     }
-    public void toVillage(Portal portal){
+    public void toVillage(ArrayList<Location> locations, boolean free){
         InventoryItem existItem = inventory.get("scroll");
-        if (existItem != null){
-            if (existItem.Amount.get() > 0) {
-                inventory.remove("scroll");
-                existItem.removeItem(1);
-                inventory.put("scroll", existItem);
-                toLocation(portal, "Dion");
+        if ((existItem != null && existItem.Amount.get() > 0) || free){
+            inventory.remove("scroll");
+            existItem.removeItem(1);
+            inventory.put("scroll", existItem);
+            Location village = locations.get(0);
+
+            Portal portal = village.getPortal();
+            Pane root = Flonarnia.foregroundRoot;
+            if (!village.isCreated()){
+                root.getChildren().clear();
+                Flonarnia.flobjects.clear();
+
+                for (Location location : locations)
+                    location.setCreated(false);
+                village.setCreated(true);
+                Flonarnia.flobjects.addAll(village.createContext());
+                Flonarnia.flobjects.add(Flonarnia.player);
+                root.getChildren().addAll(Flonarnia.flobjects);
+                root.getChildren().add(portal);
             }
+            toLocation(portal, "Dion", 0);
         }
     }
-    public void toLocation(Portal portal, String location){
-        if (portal != null){
+    public void toLocation(Portal portal, String location, int cost){
+        if (portal != null && shekelAmount.get() - cost >= 0){
             moveY(0.0001);
             double x = portal.getTranslateX() + portal.getBounds().getWidth() / 2 - WIDTH / 2;
             double y = portal.getTranslateY() + portal.getBounds().getHeight() / 2 - HEIGHT;
@@ -152,11 +166,12 @@ public class Player  extends Character {
                     ae -> {this.setVisible(true); canMove = true;}), new KeyFrame(Duration.millis(4500),
                     ae -> portal.closePortal()))
                     .play();
-            Flonarnia.logPanel.addLine(String.format("Welcome to %s!", location));
+            Flonarnia.logPanel.addLine(String.format("Welcome to %s!", location), Color.GREEN);
+            shekelAmount.set(shekelAmount.get() - cost);
+            Flonarnia.teleportPanel.setVisible(false);
         }
     }
     public void changeSword(InventoryItem sword){
-        //hero power level 0 = sword.cost / 100;
         if (sword != null && sword.kind == "weapon"){
             this.sword = sword;
             this.power = sword.cost / 10;
@@ -169,23 +184,26 @@ public class Player  extends Character {
 
     public void buyItem(InventoryItem item, int cost){
         if (shekelAmount.get() - cost >= 0) {
-            addToInventory(item);
+            if (addToInventory(item) && item.kind.compareTo("weapon") == 0)
+                return;
             shekelAmount.set(shekelAmount.get() - cost);
         }
     }
 
-    public void addToInventory(InventoryItem item){
+    public boolean addToInventory(InventoryItem item){
         InventoryItem existItem = inventory.get(item.name);
         if (existItem != null){
             System.out.println("existed");
             inventory.remove(item.name);
             existItem.addItem(item.Amount.get());
             inventory.put(item.name, existItem);
+            return true;
         }
         else{
             System.out.println("null. Create");
             inventoryPanel.addItem(item);
             inventory.put(item.name, item);
+            return false;
         }
     }
 
@@ -202,15 +220,9 @@ public class Player  extends Character {
             if (enduranceCapacity.get() <= 0)
                 run = false;
             else {
-                enduranceCapacity.set(enduranceCapacity.get() - 10);
+                enduranceCapacity.set(enduranceCapacity.get() - 1);
                 value *= 2;
-        }
-        }
-        else {
-            /*int increment = 5;
-            if (enduranceCapacity.get() + increment > enduranceMaxCapacity.get())
-                increment = 0;
-            enduranceCapacity.set(enduranceCapacity.get() + increment);*/
+            }
         }
         super.moveX(value);
     }
@@ -222,7 +234,7 @@ public class Player  extends Character {
             if (enduranceCapacity.get() <= 0)
                 run = false;
             else {
-                enduranceCapacity.set(enduranceCapacity.get() - 10);
+                enduranceCapacity.set(enduranceCapacity.get() - 1);
                 value *= 2;
             }
         }
@@ -230,7 +242,7 @@ public class Player  extends Character {
     }
 
     public void attack(){
-        if (sword == null)
+        if (sword == null || manaCapacity.getValue() - power / 10 <= 0)
             return;
         changeSize(60, 70);
         if (target != null && target.getTranslateX() - this.getTranslateX() < 0){
@@ -243,6 +255,10 @@ public class Player  extends Character {
 
         animation.play();
         animation.setOnFinished(event -> {
+            if (manaCapacity.getValue() - power / 10 > 0)
+                manaCapacity.set(manaCapacity.getValue() - power / 10);
+            else
+                manaCapacity.set(0);
             if (target != null && target != this && target.getClass() == Enemy.class){
                 double distance = target.getTranslateX() - this.getTranslateX();
                 if (distance < 0){
@@ -255,9 +271,11 @@ public class Player  extends Character {
                         Flonarnia.foregroundRoot.getChildren().remove(target);
                         Flonarnia.flobjects.remove(target);
                         target = null;
-                        shekelAmount.set(shekelAmount.getValue() + 1000);
-                        if (level.get() < 80)
-                            level.set(level.get() + 2);
+                        shekelAmount.set(shekelAmount.getValue() + enemy.cost.get());
+                        exp += enemy.cost.get();
+                        while (exp > maxExp){
+                            levelUp();
+                        }
                     }
                 }
             }
@@ -266,6 +284,22 @@ public class Player  extends Character {
             imageView.setScaleX(1);
             animation.interpolate(0);
         });
+    }
+    private void levelUp(){
+        exp -= maxExp;
+        maxExp += 100;
+        if (level.get() + 1 <= 80)
+            level.set(level.get() + 1);
+        else
+            return;
+        healthCapacity.set(level.get() * 100);
+        healthMaxCapacity.set(level.get() * 100);
+
+        manaCapacity.set(level.get() * 61);
+        manaMaxCapacity.set(level.get() * 61);
+
+        enduranceCapacity.set(level.get() * 3 / 2  + 100);
+        enduranceMaxCapacity.set(level.get() * 3 / 2  + 100);
     }
     private void changeSize(double width, double height){
         imageView.setScaleX(1);
@@ -276,43 +310,34 @@ public class Player  extends Character {
         imageView.setFitHeight(height);
         animation.setWidthHeight(width,height);
     }
-    public void attacked(double value, boolean X){
-        healthCapacity.set(healthCapacity.get() - 50);
-        //healthMaxCapacity.set(healthMaxCapacity.get() - 50);
-
-        manaCapacity.set(manaCapacity.get() - 50);
-        //manaMaxCapacity.set(manaMaxCapacity.get() - 50);
-
-        enduranceCapacity.set(enduranceCapacity.get() - 50);
-        //enduranceMaxCapacity.set(enduranceMaxCapacity.get() - 50);
-        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(1000), this);
+    public void attacked(double value, int power, boolean X){
         double sign = value / Math.abs(value);
+        if (healthCapacity.get() - power > 0)
+            healthCapacity.set(healthCapacity.get() - power);
+        else {
+            if(!X) {
+                moveX(-0.0001);
+                this.setRotate(89);
+            }
+            else
+                this.setRotate(sign * 89);
+            this.kill();
+        }
+
+        AttackedTransition attackedTransition;
+
         double throwLen = 20;
-        if (X) {
+        if (!X && sign > 0)
+            throwLen *= 3;
+        if (X){
             this.setTranslateX(this.getTranslateX() + sign * throwLen);
-            translateTransition.setFromX(this.getTranslateX());
-            translateTransition.setToX(this.getTranslateX() + value);
-            translateTransition.setCycleCount(1);
-            translateTransition.play();
-
-            if (Collision.checkTranslateX(this, Flonarnia.flobjects, 0) != null) {
-                translateTransition.stop();
-                return;
-            }
-        }else{
-            if (sign > 0){
-                throwLen *= 3;
-            }
+            attackedTransition = new AttackedTransition(Duration.millis(1000), this, this.getTranslateX() + value, X);
+            attackedTransition.play();
+        }
+        else{
             this.setTranslateY(this.getTranslateY() + sign * throwLen);
-            translateTransition.setFromY(this.getTranslateY());
-            translateTransition.setToY(this.getTranslateY() + value);
-            translateTransition.setCycleCount(1);
-            translateTransition.play();
-
-            if (Collision.checkTranslateY(this, Flonarnia.flobjects, 0) != null) {
-                translateTransition.stop();
-                return;
-            }
+            attackedTransition = new AttackedTransition(Duration.millis(1000), this, this.getTranslateY() + value, X);
+            attackedTransition.play();
         }
 
         ColorAdjust blackout = new ColorAdjust();
@@ -326,7 +351,12 @@ public class Player  extends Character {
         imageView.setCache(true);
         imageView.setCacheHint(CacheHint.SPEED);
 
-        translateTransition.setOnFinished(event -> {imageView.setEffect(null);});
+        attackedTransition.setOnFinished(event -> {
+            if (isAlive())
+                imageView.setEffect(null);
+            this.setTranslateY((int)this.getTranslateY());
+            this.setTranslateX((int)this.getTranslateX());
+        });
     }
     public void changeTarget(Flobject target){
         this.target = target;
@@ -340,12 +370,14 @@ public class Player  extends Character {
     }
 
     public void regenerate(){
-        int manaValue = 3;
-        int healthValue = 3;
-        int enduranceValue = 7;
-        regenerateHP(healthValue);
-        regenerateMP(manaValue);
-        regenerateED(enduranceValue);
+        if (isAlive()) {
+            int manaValue = 3;
+            int healthValue = 3;
+            int enduranceValue = 7;
+            regenerateHP(healthValue);
+            regenerateMP(manaValue);
+            regenerateED(enduranceValue);
+        }
     }
     private void regenerateHP(int healthValue){
         if (healthCapacity.get() + healthValue > healthMaxCapacity.get())
@@ -362,36 +394,37 @@ public class Player  extends Character {
             enduranceValue = enduranceMaxCapacity.get() - enduranceCapacity.get();
         enduranceCapacity.set(enduranceCapacity.get() + enduranceValue);
     }
-    public void spend(){
-        int manaValue = 200;
-        int healthValue = 200;
-        int enduranceValue = 200;
-        spendHP(healthValue);
-        spendMP(manaValue);
-        spendED(enduranceValue);
+
+    public boolean isAlive(){
+        return alive;
     }
-    private void spendHP(int healthValue){
-        if (healthCapacity.get() - healthValue < 0)
-            healthValue = healthCapacity.get();
-        healthCapacity.set(healthCapacity.get() - healthValue);
+    private void kill(){
+        if (alive) {
+            if (level.get() > 1)
+                level.set(level.get() - 1);
+            alive = false;
+            canMove = false;
+            healthCapacity.set(0);
+            manaCapacity.set(0);
+            enduranceCapacity.set(0);
+            Flonarnia.toVillagePanel.setVisible(true);
+            Flonarnia.logPanel.addLine("You are dead", Color.RED);
+        }
     }
-    private void spendMP(int manaValue){
-        if (manaCapacity.get() - manaValue < 0)
-            manaValue = manaCapacity.get();
-        manaCapacity.set(manaCapacity.get() - manaValue);
-    }
-    private void spendED(int enduranceValue){
-        if (enduranceCapacity.get() - enduranceValue < 0)
-            enduranceValue = enduranceCapacity.get();
-        enduranceCapacity.set(enduranceCapacity.get() - enduranceValue);
+    public void resurrect(){
+        alive = true;
+        healthCapacity.set(1);
+        manaCapacity.set(1);
+        enduranceCapacity.set(1);
+        imageView.setEffect(null);
+        Flonarnia.logPanel.addLine("You were resurrected", Color.GREEN);
+        this.setRotate(0);
     }
 
-
-    public void saveState(){
-        try(DataOutputStream file = new DataOutputStream(new FileOutputStream("hero.bin")))
+    public void saveState(String login){
+        try(DataOutputStream file =
+                    new DataOutputStream(new FileOutputStream("src/Flonarnia/tools/Base/" + login + ".bin")))
         {
-            file.writeDouble(this.getTranslateX());
-            file.writeDouble(this.getTranslateY());
             file.writeInt(level.get());
             file.writeInt(shekelAmount.get());
             file.writeInt(healthCapacity.get());
@@ -418,11 +451,10 @@ public class Player  extends Character {
             System.out.println(ex.getMessage());
         }
     }
-    public void loadState(){
-        try(DataInputStream file = new DataInputStream(new FileInputStream("hero.bin")))
+    public void loadState(String login){
+        try(DataInputStream file =
+                    new DataInputStream(new FileInputStream("src/Flonarnia/tools/Base/" + login + ".bin")))
         {
-            this.setTranslateX((int)file.readDouble());
-            this.setTranslateY((int)file.readDouble());
             level.set(file.readInt());
             shekelAmount.set(file.readInt());
             healthCapacity.set(file.readInt());

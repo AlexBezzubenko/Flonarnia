@@ -1,19 +1,19 @@
 package Flonarnia.Panels;
 
-import Flonarnia.Heroes.Strategy.Strategy;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+
 import java.io.File;
 
 /**
  * Created by Alexander on 14.05.2016.
  */
 public class LogPanel extends Panel {
-    private Text log = new Text();
+    private TextFlow log = new TextFlow();
     private ScrollPane scrollPane = new ScrollPane();
-    private int linesAmount = 0;
     public LogPanel(double translateX, double translateY, Pane pane){
         super(translateX, translateY, pane);
 
@@ -22,9 +22,8 @@ public class LogPanel extends Panel {
         scrollPane.getStylesheets().clear();
         scrollPane.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
         scrollPane.setStyle("-fx-background-color: transparent; -fx-control-inner-background: transparent;");
-        log.setWrappingWidth(180);
+
         log.setTranslateX(10);
-        log.setFill(Color.GOLD);
         scrollPane.setContent(log);
         this.getChildren().add(scrollPane);
 
@@ -37,12 +36,22 @@ public class LogPanel extends Panel {
         });
     }
     public void addLine(String line){
-        String currentText = log.getText();
-        if (currentText.isEmpty())
-            log.setText(line);
+        addLine(line, Color.GOLD);
+    }
+    public void addLine(String line, Color color){
+        Text text = new Text();
+        text.setWrappingWidth(180);
+        text.setFill(color);
+
+        if (log.getChildren().size() > 20)
+            log.getChildren().clear();
+
+        if (log.getChildren().isEmpty())
+            text.setText(line);
         else
-            log.setText(currentText + "\n" + line);
-        linesAmount++;
-        scrollPane.setVvalue(1.0);
+            text.setText("\n" + line);
+
+        log.getChildren().addAll(text);
+        scrollPane.setVvalue(scrollPane.getVmax());
     }
 }

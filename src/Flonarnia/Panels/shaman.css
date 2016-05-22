@@ -1,0 +1,12 @@
+.label {
+    -fx-text-fill: goldenrod;
+    -fx-font-style: italic;
+     -fx-font-weight: bold;
+}
+
+.button{
+    -fx-background-color: grey;
+    -fx-font-size: 14px;
+    -fx-text-fill: yellow;
+}
+

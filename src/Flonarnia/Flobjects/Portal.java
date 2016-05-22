@@ -1,5 +1,6 @@
 package Flonarnia.Flobjects;
 
+import Flonarnia.Scenes.Flonarnia;
 import Flonarnia.tools.SpriteAnimation;
 import javafx.animation.Animation;
 import javafx.util.Duration;
@@ -15,7 +16,8 @@ public class Portal extends Flobject {
         animation = new SpriteAnimation(this.imageView, Duration.millis(500),columns,offsetX,offsetY,WIDTH,HEIGHT);
         bounds.setWidth(WIDTH);
         bounds.setHeight(HEIGHT);
-        this.getChildren().remove(visual);
+
+        this.setOnMouseClicked(e->Flonarnia.toVillagePanel.setVisible(true));
     }
 
     public void closePortal(){

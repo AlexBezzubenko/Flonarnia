@@ -1,11 +1,11 @@
 package Flonarnia.Heroes;
 
 import Flonarnia.Flobjects.Flobject;
-import Flonarnia.Heroes.Strategy.Strategy;
 import Flonarnia.Scenes.Flonarnia;
 import Flonarnia.tools.Collision;
 import Flonarnia.tools.SpriteAnimation;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.util.Duration;
 
 /**
@@ -14,13 +14,15 @@ import javafx.util.Duration;
 
 //        name = "buffalo";
 //        name = "dark_soul";
-//        name = "orge";
+//        name = "ogre";
 //        name = "undead";
 //        name = "dragon";
 
 public class Enemy extends MovableFlobject {
     public SimpleDoubleProperty health = new SimpleDoubleProperty(1000);
     public SimpleDoubleProperty maxHealth = new SimpleDoubleProperty(1000);
+    public SimpleIntegerProperty power = new SimpleIntegerProperty(50);
+    public SimpleIntegerProperty cost = new SimpleIntegerProperty(1);
 
     public Enemy(double translateX, double translateY, String species) {
         super(translateX, translateY, "Enemy", species);
@@ -33,19 +35,22 @@ public class Enemy extends MovableFlobject {
         bounds.setHeight(HEIGHT / 2);
         bounds.setTranslateY(translateY + HEIGHT / 2);
         bounds.setTranslateX(translateX + WIDTH /4);
-
-        //this.getChildren().removeAll(this.visual);
+    }
+    public Enemy(double translateX, double translateY, String species, int level) {
+        this(translateX, translateY, species);
+        health.set(level * 100);
+        maxHealth.set(level * 100);
+        power.set(level * 15);
+        cost.set(level * 100);
     }
 
     public void moveX(double value){
         this.setTranslateX(this.getTranslateX() + value);
-        //rect.setTranslateX(this.getTranslateX() + WIDTH / 4);
 
         Flobject collisionFlobject = Collision.checkTranslateX(this, Flonarnia.flobjects, value);
         if (collisionFlobject != null){
             if (collisionFlobject.getClass() == Player.class){
-                ((Player)collisionFlobject).attacked(value / Math.abs(value) * 200, true);
-                //this.setTranslateX(this.getTranslateX() - 5);
+                ((Player)collisionFlobject).attacked(value / Math.abs(value) * 150, power.get(), true);
             }
             return;
         }
@@ -62,12 +67,10 @@ public class Enemy extends MovableFlobject {
     public void moveY(double value) {
         animation.setWidthHeight(width,height);
         this.setTranslateY(this.getTranslateY() + value);
-        //rect.setTranslateY(this.getTranslateY() + HEIGHT / 2);
         Flobject collisionFlobject = Collision.checkTranslateY(this, Flonarnia.flobjects, value);
         if (collisionFlobject != null){
             if (collisionFlobject.getClass() == Player.class){
-                ((Player)collisionFlobject).attacked(value / Math.abs(value) * 200, false);
-                //this.setTranslateX(this.getTranslateX() - 5);
+                ((Player)collisionFlobject).attacked(value / Math.abs(value) * 150, power.get(), false);
             }
             return;
         }
@@ -80,31 +83,5 @@ public class Enemy extends MovableFlobject {
         }
 
         animation.play();
-    }
-    public void moveCircle(int velocity){
-        if (moveCircleRadius >= 0 && moveCircleRadius < 800){
-            moveY(velocity);
-            animation.play();
-        }
-        else if (moveCircleRadius < 0 && moveCircleRadius > -800){
-            moveY(-velocity);
-            animation.play();
-        }
-        moveCircleRadius -= velocity;
-
-        if (moveCircleRadius < -800){
-            moveCircleRadius = 800;
-            animation.stop();
-        }
-    }
-
-    public void stop(){
-        if (isRunning) {
-            isRunning = false;
-            animation.setColumns(6);
-            animation.setOffsetX(offsetX); // +212 for player not influences now
-        }
-        animation.interpolate(0);
-        animation.stop();
     }
 }

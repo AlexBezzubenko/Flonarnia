@@ -7,16 +7,6 @@ import java.util.ArrayList;
  * Created by Alexander on 13.04.2016.
  */
 public class Collision {
-    /*public static boolean checkTranslateX(Flobject checking, ArrayList<Flobject> checkers, double value){
-        for (Flobject flobject:checkers){
-            if(flobject != checking && flobject.bounds.getBoundsInParent().intersects(checking.bounds.getBoundsInParent())){
-                checking.setTranslateX(checking.getTranslateX() - value);
-                checking.bounds.setTranslateX(checking.getTranslateX() + checking.WIDTH / 4);
-                return true;
-            }}
-
-        return false;
-    }*/
     public static Flobject checkTranslateX(Flobject checking, ArrayList<Flobject> checkers, double value){
         for (Flobject flobject:checkers){
             if(flobject != checking && flobject.getBounds().getBoundsInParent().intersects(checking.getBounds().getBoundsInParent())){
