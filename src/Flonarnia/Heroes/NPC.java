@@ -60,9 +60,6 @@ public class NPC  extends Character {
                     case "Shaman":
                         Flonarnia.shamanPanel.setVisible(true);
                         break;
-                    case "Blacksmith":
-                        Flonarnia.questPanel.setVisible(true);
-                        break;
                 }
             }
         });

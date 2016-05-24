@@ -50,7 +50,6 @@ public class Flonarnia {
     public static TeleportPanel teleportPanel;
     public static ToVillagePanel toVillagePanel;
     public static ShamanPanel shamanPanel;
-    public static QuestPanel questPanel;
 
     public static LogPanel logPanel;
     public static SkillPanel skillPanel;
@@ -215,8 +214,6 @@ public class Flonarnia {
         teleportPanel = new TeleportPanel(appRoot);
         teleportPanel.setLinks(locations, foregroundRoot);
         shamanPanel = new ShamanPanel(appRoot);
-        questPanel = new QuestPanel(appRoot);
-
 
         mainScene = new Scene(appRoot, APP_W, APP_W);
         primaryStage.setScene(mainScene);
