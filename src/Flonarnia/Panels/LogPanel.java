@@ -18,9 +18,7 @@ public class LogPanel extends Panel {
         super(translateX, translateY, pane);
 
         scrollPane.setTranslateY(10);
-        File f = new File("src/Flonarnia/Panels/log.css");
-        scrollPane.getStylesheets().clear();
-        scrollPane.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
+        scrollPane.getStylesheets().add("Flonarnia/Panels/log.css");
         scrollPane.setStyle("-fx-background-color: transparent; -fx-control-inner-background: transparent;");
 
         log.setTranslateX(10);

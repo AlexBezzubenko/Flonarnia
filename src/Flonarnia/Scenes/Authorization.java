@@ -1,6 +1,8 @@
 package Flonarnia.Scenes;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,8 +15,11 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.*;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.util.Hashtable;
 
 /**
@@ -26,8 +31,19 @@ public class Authorization {
     private AnimationTimer animationTimer;
     private Stage primaryStage;
     private String login;
+    private String parentPath;
 
     public Authorization(Stage primaryStage){
+        URL url = getClass().getProtectionDomain().getCodeSource().getLocation(); //Gets the path
+        String jarPath = null;
+        try {
+            jarPath = URLDecoder.decode(url.getFile(), "UTF-8"); //Should fix it to be read correctly by the system
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        parentPath = new File(jarPath).getParentFile().getPath(); //Path of the jar
+        parentPath = parentPath + File.separator;
         this.primaryStage = primaryStage;
     }
 
@@ -86,10 +102,19 @@ public class Authorization {
         };
 
         loginButton.setOnMouseClicked(event -> {
+            File file = new File(parentPath + "\\Base");
+            if (!file.exists()) {
+                if (file.mkdir()) {
+                    System.out.println("Directory is created!");
+                } else {
+                    System.out.println("Failed to create directory!");
+                }
+            }
+
             Hashtable<String, String> base = new Hashtable<>();
             try (DataInputStream iStream =
                          new DataInputStream(new BufferedInputStream
-                                 (new FileInputStream("src/Flonarnia/tools/Base/base.bin")))) {
+                                 (new FileInputStream(parentPath + "\\Base\\" + "base.bin")))) {
                 while (true) {
                     if (iStream.available() == 0) {
                         iStream.close();
@@ -122,10 +147,11 @@ public class Authorization {
             text.setVisible(true);
         });
 
-        Registration registration = new Registration();
+        Registration registration = new Registration(parentPath, loginField);
         registration.createContent();
         registration.setVisible(false);
         registrationButton.setOnMouseClicked(event -> {
+            registration.clearContent();
             registration.setVisible(true);
         });
         root.getChildren().addAll(backgroundRect,background, borderPane, registration);
@@ -138,12 +164,26 @@ public class Authorization {
 class Registration extends Pane{
     private VBox vBox = new VBox();
     private TextField loginField = new TextField();
+    private TextField loginFieldA = new TextField();
 
     private PasswordField passwordField = new PasswordField();
     private PasswordField checkPasswordField = new PasswordField();
     private Button signUp = new Button("Sign Up");
     private Button cancel = new Button("Cancel");
     private Text text = new Text("Registered");
+    private String parentPath;
+
+    public Registration(String parentPath, TextField loginField){
+        loginFieldA = loginField;
+        this.parentPath = parentPath;
+    }
+
+    public void clearContent(){
+        loginField.setText("");
+        passwordField.setText("");
+        checkPasswordField.setText("");
+        text.setVisible(false);
+    }
 
     public void createContent(){
         this.setTranslateX(Authorization.APP_W / 2 - 50);
@@ -169,7 +209,7 @@ class Registration extends Pane{
                 Hashtable<String, String> base = new Hashtable<>();
                 try (DataInputStream iStream =
                              new DataInputStream(new BufferedInputStream
-                                     (new FileInputStream("src/Flonarnia/tools/Base/base.bin")))) {
+                                     (new FileInputStream(parentPath + "\\Base\\" + "base.bin")))) {
                     while (true) {
                         if (iStream.available() == 0) {
                             iStream.close();
@@ -187,7 +227,7 @@ class Registration extends Pane{
 
                 if (base.get(login) == null) {
                     try (DataOutputStream oStream = new DataOutputStream(
-                            new BufferedOutputStream(new FileOutputStream("src/Flonarnia/tools/Base/base.bin", true)))) {
+                            new BufferedOutputStream(new FileOutputStream(parentPath + "\\Base\\" + "base.bin", true)))) {
                         oStream.writeUTF(login);
                         oStream.writeUTF(password);
                         oStream.close();
@@ -196,8 +236,12 @@ class Registration extends Pane{
                     } catch (IOException e1) {
                         System.out.println("can't write io");
                     }
+                    loginFieldA.setText(login);
                     text.setText("Registered");
                     text.setFill(Color.GREEN);
+                    new Timeline(new KeyFrame(
+                            Duration.millis(500),
+                            e -> this.setVisible(false) )).play();
                 }
                 else{
                     text.setText("User already exists");

@@ -56,9 +56,7 @@ public class ShamanPanel extends Panel {
             }
         });
 
-        File f = new File("src/Flonarnia/Panels/shaman.css");
-        this.getStylesheets().clear();
-        this.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
+        this.getStylesheets().add("Flonarnia/Panels/shaman.css");
 
         VBox vBox = new VBox();
         vBox.getChildren().addAll(recoverHpButton, recoverEdButton, recoverMpButton);

@@ -23,6 +23,9 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -63,6 +66,7 @@ public class Flonarnia {
     private Location currentLocation;
     private ArrayList<Location> locations = new ArrayList<>();
     private String login;
+    private String parentPath;
 
     public Flonarnia(Stage primaryStage, String login){
         this.primaryStage = primaryStage;
@@ -72,6 +76,17 @@ public class Flonarnia {
         if(!login.matches(pattern)){
             login = "hero";
         }
+
+        URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
+        String jarPath = null;
+        try {
+            jarPath = URLDecoder.decode(url.getFile(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        parentPath = new File(jarPath).getParentFile().getPath();
+        parentPath = parentPath + File.separator;
 
         APP_W = primaryStage.getWidth();
         APP_H = primaryStage.getHeight();
@@ -144,7 +159,7 @@ public class Flonarnia {
         //t.start();
         createContext();
 
-        player.loadState(login);
+        player.loadState(login, parentPath);
         logPanel.addLine("Welcome to Flonarnia!", Color.GREEN);
         tracker = PerformanceTracker.getSceneTracker(mainScene);
         frames.setFont(Font.font ("Verdana", 20));
@@ -226,7 +241,7 @@ public class Flonarnia {
         player.Bind(skillPanel);
 
         primaryStage.setOnCloseRequest(e->{
-            player.saveState(login);
+            player.saveState(login, parentPath);
         });
     }
 
@@ -254,7 +269,8 @@ public class Flonarnia {
         else if (isPressed(KeyCode.Q)){
             primaryStage.close();
         }
-        else if (isPressed(KeyCode.R)){
+        else if (isPressed(KeyCode.M) && isPressed(KeyCode.O) && isPressed(KeyCode.N) && isPressed(KeyCode.E)
+                 && isPressed(KeyCode.Y)){
             player.shekelAmount.set(player.shekelAmount.getValue() + 2000);
         }
         else {
@@ -270,14 +286,6 @@ public class Flonarnia {
             player.inventoryPanel.setVisible(!isVisibleInventory);
             player.inventoryPanel.toFront();
             setKeyIsPressed(KeyCode.I);
-        }
-        if (isReleased(KeyCode.C)){
-            player.saveState(login);
-            setKeyIsPressed(KeyCode.C);
-        }
-        if (isReleased(KeyCode.V)){
-            player.loadState(login);
-            setKeyIsPressed(KeyCode.V);
         }
 
         if (isReleased(KeyCode.F2)){

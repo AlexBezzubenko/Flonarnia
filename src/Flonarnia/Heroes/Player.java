@@ -421,9 +421,9 @@ public class Player  extends Character {
         this.setRotate(0);
     }
 
-    public void saveState(String login){
+    public void saveState(String login, String parentPath){
         try(DataOutputStream file =
-                    new DataOutputStream(new FileOutputStream("src/Flonarnia/tools/Base/" + login + ".bin")))
+                    new DataOutputStream(new FileOutputStream(parentPath + "\\Base\\" + login + ".bin")))
         {
             file.writeInt(level.get());
             file.writeInt(shekelAmount.get());
@@ -451,9 +451,9 @@ public class Player  extends Character {
             System.out.println(ex.getMessage());
         }
     }
-    public void loadState(String login){
+    public void loadState(String login, String parentPath){
         try(DataInputStream file =
-                    new DataInputStream(new FileInputStream("src/Flonarnia/tools/Base/" + login + ".bin")))
+                    new DataInputStream(new FileInputStream(parentPath + "\\Base\\" + login + ".bin")))
         {
             level.set(file.readInt());
             shekelAmount.set(file.readInt());
