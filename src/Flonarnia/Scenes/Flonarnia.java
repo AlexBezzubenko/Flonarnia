@@ -65,7 +65,7 @@ public class Flonarnia {
     private Portal portal;
     private Location currentLocation;
     private ArrayList<Location> locations = new ArrayList<>();
-    private String login;
+    public static String login;
     private String parentPath;
 
     public Flonarnia(Stage primaryStage, String login){
@@ -149,15 +149,7 @@ public class Flonarnia {
     }
 
     public void run(){
-        String musicFile = "/Flonarnia/src/Flonarnia/tools/res/main_theme.mp3";
-        Thread t = new Thread(() -> {
-            Media sound = new Media(new File(musicFile).toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.setVolume(0.05);
-            mediaPlayer.play();
-        });
-        //t.start();
-        createContext();
+        createContent();
 
         player.loadState(login, parentPath);
         logPanel.addLine("Welcome to Flonarnia!", Color.GREEN);
@@ -188,7 +180,7 @@ public class Flonarnia {
         timer.start();
     }
 
-    private void createContext(){
+    private void createContent(){
         Image grassImage = new Image(getClass().getResourceAsStream("/Flonarnia/tools/res/map.png"));
         ImageView grassView = new ImageView(grassImage);
         grassView.setViewport(new Rectangle2D(0, 0, APP_W, APP_H));
@@ -243,6 +235,7 @@ public class Flonarnia {
         primaryStage.setOnCloseRequest(e->{
             player.saveState(login, parentPath);
         });
+        primaryStage.setFullScreen(true);
     }
 
     private void enemyActivate(){
@@ -275,6 +268,12 @@ public class Flonarnia {
         }
         else {
             player.stop();
+        }
+
+        if (isReleased(KeyCode.ALT) && isReleased(KeyCode.ENTER)){
+            primaryStage.setFullScreen(!primaryStage.fullScreenProperty().get());
+            setKeyIsPressed(KeyCode.ALT);
+            setKeyIsPressed(KeyCode.ENTER);
         }
 
         if (isReleased(KeyCode.SHIFT)){

@@ -19,7 +19,7 @@ public class HeroPanel extends Panel {
 
     public HeroPanel(double translateX, double translateY, Pane root){
         super(translateX, translateY, root);
-        label.setText("Hero");
+        label.setText(Flonarnia.login);
         label.setStyle("-fx-text-fill: goldenrod; -fx-font-style: italic; -fx-font-weight: bold;");
         label.setTranslateX(25);
 
@@ -127,7 +127,7 @@ public class HeroPanel extends Panel {
         });
 
 
-        Rectangle levelRect = new Rectangle(45, 12, Color.GRAY);
+        Rectangle levelRect = new Rectangle(90, 12, Color.GRAY);
         levelRect.setTranslateX(10);
         levelRect.setTranslateY(3);
         levelRect.setOpacity(0.5);

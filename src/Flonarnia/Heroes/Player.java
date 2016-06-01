@@ -292,8 +292,8 @@ public class Player  extends Character {
             level.set(level.get() + 1);
         else
             return;
-        healthCapacity.set(level.get() * 100);
-        healthMaxCapacity.set(level.get() * 100);
+        healthCapacity.set(level.get() * 99);
+        healthMaxCapacity.set(level.get() * 99);
 
         manaCapacity.set(level.get() * 61);
         manaMaxCapacity.set(level.get() * 61);

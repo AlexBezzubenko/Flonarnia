@@ -17,7 +17,6 @@ public class Launcher extends Application {
         primaryStage.setWidth(800);
         primaryStage.setHeight(600);
         primaryStage.setTitle("Flonarnia");
-        //primaryStage.setFullScreen(true);
 //        Flonarnia game = new Flonarnia(primaryStage, "hero");
 //        game.run();
         primaryStage.show();

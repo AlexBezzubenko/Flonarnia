@@ -29,7 +29,6 @@ public class NPC  extends Character {
     @Override
     protected void setTarget(){
         this.setOnMouseClicked(event -> {
-            Flonarnia.logPanel.addLine("Changed target: " + this.getClass().getSimpleName());
             Flonarnia.player.changeTarget(this);
             Flonarnia.targetPanel.changeTarget(this, species, this.getClass().getSimpleName());
 
